@@ -1,0 +1,21 @@
+.container{
+    margin-top:5%;
+}
+
+
+
+.formcent{
+    background-color:slategrey;
+}
+
+
+
+.boton{
+    background-color: springgreen;
+}
+
+.form-label{
+    font-family: 'Libre Franklin', sans-serif;
+    font-weight: 100;
+    color: white;
+}
