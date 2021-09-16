@@ -1,55 +1,56 @@
 <template>
-  <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
+  <v-app id="inspire">
+    <v-navigation-drawer v-model="drawer" app dark class="grey darken-3">
+      <v-list-item>
+        <v-list-item-content>
+          <v-list-item-title class="text-h6">
+            {{ mainTitle }}
+          </v-list-item-title>
+          <v-list-item-subtitle>
+            Bienvenido {{ usuario }}
+          </v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
 
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
+      <v-divider></v-divider>
 
-      <v-spacer></v-spacer>
+      <v-list dense nav>
+        <v-list-item v-for="item in items" :key="item.title" link :to="item.route">
+          <v-list-item-icon>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-item-icon>
 
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
+          <v-list-item-content>
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+      <!--  -->
+    </v-navigation-drawer>
+
+    <v-app-bar app dark class="grey darken-4">
+      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+
+      <v-toolbar-title>{{ mainTitle }}</v-toolbar-title>
     </v-app-bar>
 
     <v-main>
-      <router-view/>
+      <router-view></router-view>
     </v-main>
   </v-app>
 </template>
 
 <script>
-
 export default {
-  name: 'App',
-
   data: () => ({
-    //
+    drawer: null,
+    mainTitle: "Booking Parking",
+    usuario: "UserPrueba",
+    items: [
+      { title: "Dashboard", icon: "mdi-view-dashboard", route: '/' },
+      { title: "Mis vehículos", icon: "mdi-car", route: '/mis-vehiculos' },
+      { title: "Reservas", icon: "mdi-calendar-month", route: '/reservas' },
+    ],
   }),
 };
 </script>
