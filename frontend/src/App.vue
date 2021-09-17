@@ -1,10 +1,11 @@
 <template>
   <v-app id="inspire">
-    <v-navigation-drawer v-model="drawer" app dark class="grey darken-3">
-      <Menu :mainTitle="mainTitle" :username="username"></Menu><!--  -->
+    <v-navigation-drawer v-model="drawer" app dark class="brown darken-2">
+      <Menu :mainTitle="mainTitle" :username="username"></Menu
+      ><!--  -->
     </v-navigation-drawer>
 
-    <v-app-bar app dark class="grey darken-4">
+    <v-app-bar app dark class="brown darken-4">
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
       <v-toolbar-title>{{ mainTitle }}</v-toolbar-title>
@@ -17,7 +18,7 @@
 </template>
 
 <script>
-import Menu from './components/Menu.vue';
+import Menu from "./components/Menu.vue";
 export default {
   name: "App",
   components: { Menu },
