@@ -1,7 +1,46 @@
 <template>
-  <div>
+  <div class="cupos">
 
-      <h1>Asignar Cupos</h1>
+      
+      <v-row align="center" justify="center" >
+        <v-col cols="12">
+
+          <v-hover v-slot="{ hover }"  >
+            <v-card :elevation="hover ? 12 : 2" class="mx-auto" height="auto" max-width="350" >
+              <v-card-text class="my-4 text-center text-h6">
+              Asignar Cupos
+              </v-card-text>
+
+            
+              <v-row align="center" justify="center" >
+                <v-col cols="10">  
+                  <v-img  max-height="300"  :src="img" ></v-img> 
+
+                  <v-text-field   label ="Total de Cupos" :rules ="imgRules" v-model="img" type="number" min="0">
+                    <v-icon slot="prepend" > mdi-traffic-cone </v-icon>
+                  </v-text-field>
+
+                  <v-text-field   label ="Cupos Reservados" :rules ="imgRules" v-model="img" type="number" min="0">
+                    <v-icon slot="prepend" > mdi-calendar-remove</v-icon>  
+                  </v-text-field>
+
+                  <v-text-field   label ="Cupos Carro" :rules ="imgRules" v-model="img" type="number" min="0">
+                    <v-icon slot="prepend" > mdi-car </v-icon>
+                  </v-text-field>
+
+                  <v-text-field   label ="Cupos Moto" :rules ="imgRules" v-model="img" type="number" min="0">
+                    <v-icon slot="prepend" > mdi-moped </v-icon>
+                  </v-text-field>
+
+                  
+                  
+                </v-col> 
+              </v-row>  
+            </v-card>
+          </v-hover>
+        </v-col>
+      </v-row>
+
 
   </div>
 </template>
@@ -13,5 +52,7 @@ export default {
 </script>
 
 <style>
-
+.cupos{
+  margin-top: 5%;
+}
 </style>
