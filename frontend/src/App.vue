@@ -1,31 +1,31 @@
 <template>
   <v-app id="inspire">
-    <v-navigation-drawer v-model="drawer" app dark class="brown darken-2">
-      <Menu :mainTitle="mainTitle" :username="username"></Menu
-      ><!--  -->
-    </v-navigation-drawer>
-
-    <v-app-bar app dark class="brown darken-4">
-      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-
-      <v-toolbar-title>{{ mainTitle }}</v-toolbar-title>
-    </v-app-bar>
-
+    <Navbar :drawer="drawer"/>
+    <Menu :mainTitle="mainTitle" :username="username" :drawer="drawer"></Menu>
     <v-main>
+      <div class="content">
+        <p>Drawer: {{ drawer }}</p>
+      </div>
       <router-view></router-view>
     </v-main>
+
+    <Footer/>
+
   </v-app>
 </template>
 
 <script>
+import Footer from "./components/footer";
+import Navbar from "./components/navbar";
 import Menu from "./components/Menu.vue";
+
 export default {
   name: "App",
-  components: { Menu },
+  components: {Navbar, Footer, Menu},
   data: () => ({
-    drawer: null,
     mainTitle: "Booking Parking",
     username: "User0000",
+    drawer: false,
   }),
 };
 </script>
