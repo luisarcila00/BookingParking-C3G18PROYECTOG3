@@ -1,13 +1,18 @@
 <template>
   <v-app id="inspire">
-    <v-navigation-drawer v-model="drawer" app dark class="brown darken-2">
+    <v-navigation-drawer
+      v-model="drawer"
+      app
+      dark
+      src="./assets/bg3.jpg"
+    >
       <Menu :mainTitle="mainTitle" :username="username"></Menu
       ><!--  -->
     </v-navigation-drawer>
 
-    <v-app-bar app dark class="brown darken-4">
+    <v-app-bar app dark src="./assets/bg.jpg">
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-
+      <v-img contain src="./assets/BPLogo.jpeg" max-height="50" max-width="80"></v-img>
       <v-toolbar-title>{{ mainTitle }}</v-toolbar-title>
     </v-app-bar>
 
