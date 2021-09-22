@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer v-model="this.drawer" app dark class="brown darken-2">
+  <v-navigation-drawer v-model="this.drawer" app dark>
     <v-list-item>
       <v-list-item-content>
         <v-list-item-title class="text-h6">

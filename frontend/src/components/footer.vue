@@ -1,5 +1,5 @@
 <template>
-  <v-footer color="brown darken-2" padless>
+  <v-footer dark padless>
     <v-row
         justify="center"
         no-gutters
@@ -15,7 +15,7 @@
         {{ link }}
       </v-btn>
       <v-col
-          class="brown darken-2 py-4 text-center white--text"
+          class="py-4 text-center white--text"
           cols="12"
       >
         {{ new Date().getFullYear() }} — <strong>Booking Parking</strong>
