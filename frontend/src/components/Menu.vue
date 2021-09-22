@@ -1,11 +1,11 @@
 <template>
-  <v-navigation-drawer :v-model="this.drawer" app dark class="brown darken-2">
+  <v-navigation-drawer v-model="this.drawer" app dark class="brown darken-2">
     <v-list-item>
       <v-list-item-content>
         <v-list-item-title class="text-h6">
-          {{ mainTitle }}
+          {{ this.mainTitle }}
         </v-list-item-title>
-        <v-list-item-subtitle> Bienvenido {{ username }} </v-list-item-subtitle>
+        <v-list-item-subtitle> Bienvenido {{ this.username }} </v-list-item-subtitle>
       </v-list-item-content>
     </v-list-item>
     <v-divider></v-divider>
@@ -32,7 +32,20 @@
 <script>
 export default {
   name: "Menu",
-  props: ["mainTitle", "username",'drawer'],
+  props: {
+    mainTitle: {
+      type: String,
+      default: 'Booking Parking'
+    },
+    username: {
+      type: String,
+      default: 'Invitado'
+    },
+    drawer: {
+      type: Boolean,
+      default: true
+    }
+  },
   data: () => {
     return {
       items: [
