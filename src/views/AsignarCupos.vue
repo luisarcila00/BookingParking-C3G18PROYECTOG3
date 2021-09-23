@@ -26,22 +26,43 @@
                         <v-icon left> mdi-check-bold</v-icon>
                         Confirmar
                        </v-btn>
-                   
                   </div>
+
+                  
 
                   <v-text-field  v-if="isHidden" label ="Cupos Reservados" :rules ="totalRules" v-model="reservadosCup" type="number" min="0" v-bind:max="maximun">
                     <v-icon slot="prepend" > mdi-calendar-remove</v-icon>  
-                  </v-text-field>
+                    </v-text-field>
 
-                  <v-text-field   label ="Cupos Carro" :rules ="imgRules" v-model="carroCup" type="number" min="0">
+                    <div class="botones" v-if="isHidden">
+                    <v-spacer></v-spacer>
+                      <v-btn  x-small color="secondary" dark v-on:click="confirmarMostrarReserv()" >
+                        <v-icon left> mdi-check-bold</v-icon>
+                        Confirmar
+                       </v-btn>
+                  </div>
+
+                  <v-text-field  v-if="isHiddenCars" label ="Cupos Carro" :rules ="imgRules" v-model="carroCup" type="number" min="0" v-bind:max="maximunCars">
                     <v-icon slot="prepend" > mdi-car </v-icon>
                   </v-text-field>
 
-                  <v-text-field   label ="Cupos Moto" :rules ="imgRules" v-model="motoCup" type="number" min="0">
+                  <div class="botones" v-if="isHiddenCars">
+                    <v-spacer></v-spacer>
+                      <v-btn  x-small color="secondary" dark v-on:click="confirmarMostrarCar()" >
+                        <v-icon left> mdi-check-bold</v-icon>
+                        Confirmar
+                       </v-btn>
+                  </div>
+
+                 
+
+                  <v-text-field   v-if="isHiddenMot" label ="Cupos Moto" :rules ="imgRules" v-model="motoCup" type="number" min="0" v-bind:max="maximumMot">
                     <v-icon slot="prepend" > mdi-moped </v-icon>
                   </v-text-field>
 
-                  <div class="safe">
+                  
+
+                  <div class="safe" v-if="isHiddenSafe">
                       <v-btn    color="primary" >
                         <v-icon left @click="guardar()"> mdi-content-save </v-icon>
                         Guardar
@@ -64,7 +85,9 @@ export default {
   data: ()=>({
 
     totalCup:"", reservadosCup: "", carroCup: "", motoCup: "",
-    totalMenosReservas:"", isHidden: false, maximun:"",
+ 
+    isHidden: false,  isHiddenCars: false, isHiddenMot: false, isHiddenSafe: false,
+    maximun:"", maximunCars:"", maximunMot:"",
     totalRules: [
                     value => !!value || 'Required.',
                     
@@ -77,7 +100,41 @@ export default {
     confirmarMostrar() {
       if(this.totalCup != 0){
       this.maximun = this.totalCup;
-      this.isHidden = !this.isHidden
+      this.isHidden = !this.isHidden;
+      }else {
+        alert("no tiene ningún cupo disponible");
+      }
+      
+    },
+    confirmarMostrarReserv() {
+      if(this.reservadosCup != 0){
+      this.maximunCars = this.totalCup - this.reservadosCup;
+      this.isHiddenCars = !this.isHiddenCars;
+      }else {
+        alert("Ningún cupo reservado");
+      }
+      
+    },
+    confirmarMostrarCar() {
+      if(this.CarroCup != 0){
+      
+      this.maximunMot = this.maximunCars - this.CarroCup;
+      this.isHiddenMot = !this.isHiddenMot;
+      this.isHiddenSafe = !this.isHiddenSafe;
+        if(this.CarroCup > this.maximunCars){
+          alert("solo tiene" + this.maximunCars + "disponibles");
+        }
+      }else {
+        alert("no tiene ningún cupo disponible");
+      }
+      
+    },
+
+    confirmarMostrarMot() {
+      if(this.MotoCup != 0){
+      
+      this.isHiddenSafe = !this.isHiddenSafe;
+      this.isHiddenMot = !this.isHiddenMot;
       }else {
         alert("no tiene ningún cupo disponible");
       }
