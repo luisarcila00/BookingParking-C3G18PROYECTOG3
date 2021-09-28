@@ -6,8 +6,13 @@
   <v-card class="mx-auto"
     max-width="600" >
       <v-card-title>
-        <h2>Reservar Parqueadero</h2>
+        <h2 class="mx-auto">Registro Nuevo Usuario</h2>
+
       </v-card-title>
+      <div class="text-center">
+        <img class="img-thumbnail" alt="Center aligned image" src="../assets/logoregistro.png"/>
+
+      </div>
       <v-card-text>
         <v-form class="px-3" ref="form">
           <v-text-field v-model="title" label="Nombre" name="name" prepend-icon="mdi-account" type=text :rules="inputRules"></v-text-field>
@@ -20,7 +25,7 @@
 
           <v-spacer></v-spacer>
 
-          <v-btn flat @click="submit" class="success mx-0 mt-3">Add Project</v-btn>
+          <v-btn flat @click="submit" class="success mx-0 mt-3">Registrarse</v-btn>
         </v-form>
       </v-card-text>
     </v-card>

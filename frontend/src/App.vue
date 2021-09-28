@@ -24,11 +24,23 @@
         <span>Exit</span>
         <v-icon right>mdi-exit-to-app</v-icon>
       </v-btn>
+      <v-btn flat class="font-weight-light" v-for="link in links" :key="link.text" router :to="link.route" >
+        <span>Sing Up</span>
+        <v-icon right >mdi-account</v-icon>
+        
+      </v-btn>
     </v-app-bar>
 
     <v-main>
       <router-view></router-view>
     </v-main>
+
+    <v-footer-title class="text-uppercase grey--text">
+      
+      <h1>Hola</h1>
+
+
+    </v-footer-title>
   </v-app>
 </template>
 
@@ -41,6 +53,7 @@ export default {
     drawer: null,
     mainTitle: "Booking",
     username: "User0000",
+    links: [{route: '/NewRegistro' },]
   }),
 };
 </script>
