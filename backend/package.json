@@ -1,0 +1,30 @@
+{
+  "name": "backend",
+  "version": "0.0.1",
+  "description": "Proyecto que gestiona parqueadero con funcincionalidad de reservar para grupo 18",
+  "main": "app.js",
+  "scripts": {
+    "start": "app.js",
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luisarcila00/BookingParking-C3G18PROYECTOG3.git"
+  },
+  "author": "Grupo 3",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luisarcila00/BookingParking-C3G18PROYECTOG3/issues"
+  },
+  "homepage": "https://github.com/luisarcila00/BookingParking-C3G18PROYECTOG3#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  }
+}
