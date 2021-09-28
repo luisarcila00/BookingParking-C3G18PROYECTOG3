@@ -9,7 +9,7 @@
             <div class="card-title" src="../assets/bg.jpg">
               <v-img
                 contain
-                src="../assets/BPLogo.jpeg"
+                src="../assets/logobp.jpeg"
                 max-height="50%"
                 max-width="50%"
                 position="up"
