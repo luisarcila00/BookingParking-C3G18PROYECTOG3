@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Dashboard from '../views/Dashboard.vue'
 import MisVehiculos from '../views/MisVehiculos.vue'
 import Reservas from '../views/Reservas.vue'
+import NewRegistro from '../views/NewRegistro.vue'
 
 Vue.use(VueRouter)
 
@@ -21,6 +22,11 @@ const routes = [
     path: '/reservas',
     name: 'reservas',
     component: Reservas
+  },
+  {
+    path: '/newregistro',
+    name: 'newregistro',
+    component: NewRegistro
   }
   
 ]
