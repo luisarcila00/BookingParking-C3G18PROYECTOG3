@@ -2,7 +2,7 @@
   <div id="users">
     <div id="formu">
       <div class="container">
-        <h3>CREACION DE USUARIOS</h3>
+        <h3>Registrar nuevo usuario</h3>
         <div class="row">
           <div class="col m12 card-panel">
             <validation-observer ref="observer" v-slot="{ invalid }">
