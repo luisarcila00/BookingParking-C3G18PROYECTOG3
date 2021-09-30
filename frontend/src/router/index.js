@@ -27,7 +27,7 @@ const routes = [
         component: Formulario
     },
     {
-        path: '/Login',
+        path: '/login',
         name: 'Login',
         component: Login
     },

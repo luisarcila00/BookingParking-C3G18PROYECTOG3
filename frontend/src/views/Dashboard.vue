@@ -1,7 +1,6 @@
 <template>
   <div class="dashboard">
     <h1>Dashboard page</h1>
-
     <v-container class="my-5">
       <v-card class="pa-3 ma-3">
         <v-layout row wrap justify-center>
