@@ -66,15 +66,6 @@ export default {
 }
 
 </script>
-<style lang="scss">
-.fondo {
-  background: url(../assets/02.jpg);
-  margin: 1em;
-}
+<style >
 
-.formulario {
-  div {
-    background-color: #d3cbcb;
-  }
-}
 </style>
