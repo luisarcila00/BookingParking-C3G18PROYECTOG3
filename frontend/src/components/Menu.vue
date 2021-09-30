@@ -48,6 +48,7 @@ export default {
     return {
       items: [
         { title: "Inicio", icon: "mdi-home", route: "/" },
+        { title: "Dashboard", icon: "mdi-view-dashboard", route: "/Dashboard" },
         { title: "Crear Usuarios", icon: 'mdi-account', route: "/CrearUsuario" },
         { title: "Mis vehículos", icon: "mdi-car", route: "/mis-vehiculos" },
         { title: "Reservas", icon: "mdi-calendar-month", route: "/reservas" },

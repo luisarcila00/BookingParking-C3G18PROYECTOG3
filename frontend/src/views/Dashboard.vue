@@ -1,8 +1,5 @@
 <template>
-  <div class="dashboard">
-    <h1>Dashboard page</h1>
-    <dashboard-cards></dashboard-cards>
-  </div>
+  <dashboard-cards></dashboard-cards>
 </template>
 
 <script>
@@ -13,4 +10,5 @@ export default {
 </script>
 
 <style>
+
 </style>
