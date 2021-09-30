@@ -1,6 +1,7 @@
 const reservasModel = require('../models/reservas.model')
 
 module.exports = class ReservasApi {
+    // El controlador que sera llamado para cada acción
     static async getAll(req, res) {
         try {
             const reservas = await reservasModel.find()
