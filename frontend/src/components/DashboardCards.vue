@@ -7,7 +7,7 @@
         </v-col>
       </v-row>
     </div>
-    <div class="dashboard-cards  pa-1 ma-3">
+    <div class="dashboard-cards pa-1 ma-3">
       <v-row wrap>
         <v-card
           class="d-block pa-1 ma-3 sm-12"
@@ -19,8 +19,8 @@
           v-show="card.admin"
           ><div>
             <v-card-cardTitle class="text-center pa-3 ma-3">{{
-            card.cardTitle
-          }}</v-card-cardTitle>
+              card.cardTitle
+            }}</v-card-cardTitle>
           </div>
 
           <div class="ma-3 pa-3">
@@ -50,12 +50,20 @@ export default {
   data: () => ({
     admin: true,
     cards: [
-      { cardTitle: "Capacidad total de Vehículos", cardValue: "250", admin: true },
+      {
+        cardTitle: "Capacidad total de Vehículos",
+        cardValue: "250",
+        admin: true,
+      },
       { cardTitle: "Usuarios registrados", cardValue: "109", admin: true },
       { cardTitle: "Vehículos registrados", cardValue: "03", admin: true },
       { cardTitle: "Reservas realizadas", cardValue: "02", admin: true },
       { cardTitle: "Reservas canceladas", cardValue: "00", admin: true },
-      { cardTitle: "Total vehículos que han ingresado", cardValue: "1023918", admin: true, },
+      {
+        cardTitle: "Total vehículos que han ingresado",
+        cardValue: "1023918",
+        admin: true,
+      },
       { cardTitle: "Multas", cardValue: "00", admin: true },
       { cardTitle: "Horas en estacionamiento", cardValue: "27", admin: true },
     ],
@@ -64,9 +72,5 @@ export default {
 </script>
 
 <style>
-#v-card {
-  margin-left: auto;
-  margin-right: auto;
-  color: aqua;
-}
+
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <v-img src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg">
+  <v-img src="../assets/02.jpg">
     <dashboard-cards></dashboard-cards>
   </v-img>
 </template>
