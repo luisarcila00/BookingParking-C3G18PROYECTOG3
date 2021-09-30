@@ -1,11 +1,11 @@
 const express = require('express')
 const router = express.Router()
-const reservasContoller = require('../controllers/reservas.controller')
+const bookingsContoller = require('../controllers/bookings.controller')
 //Definir rutas
-router.get('/products', reservasContoller.getAll)
-router.get('/products/:code', reservasContoller.getById)
-router.post('/products', reservasContoller.create)
-router.put('/products/:code', reservasContoller.update)
-router.delete('/products/:code', reservasContoller.delete)
+router.get('/bookings', bookingsContoller.getAll)
+router.get('/booking/:code', bookingsContoller.getById)
+router.post('/booking', bookingsContoller.create)
+router.put('/booking/:code', bookingsContoller.update)
+router.delete('/booking/:code', bookingsContoller.delete)
 
 module.exports = router

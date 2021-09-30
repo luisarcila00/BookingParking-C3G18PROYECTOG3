@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-app-bar app dark src="../assets/bg_black.png">
+    <v-app-bar app dark src="../../assets/bg_black.png">
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title>{{ this.mainTitle }}</v-toolbar-title>
       <v-spacer></v-spacer>
@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import Menu from "./Menu";
+import Menu from "../Menu";
 export default {
   name: "navbar",
   components: {
