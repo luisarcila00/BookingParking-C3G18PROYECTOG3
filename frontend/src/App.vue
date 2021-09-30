@@ -12,7 +12,7 @@
 
 <script>
 import Footer from "./components/footer";
-import Navbar from "./components/appbar/Navbar";
+import Navbar from "./components/appbar/Appbar";
 import navigationDrawer from "./components/navigationDrawer/NavigationDrawer";
 
 export default {
