@@ -1,6 +1,4 @@
 <template>
-  <div id="users">
-    <div id="formu">
       <div class="container">
         <h3>CREACION DE USUARIOS</h3>
         <div class="row">
@@ -110,8 +108,6 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
 </template>
 
 <script>
@@ -188,15 +184,6 @@ export default {
 }
 
 </script>
-<style lang="scss">
-#users {
-  background-color: rgb(255, 255, 255);
-}
+<style >
 
-#formu {
-  div {
-    background-color: #d3cbcb;
-
-  }
-}
 </style>
