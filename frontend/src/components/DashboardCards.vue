@@ -1,33 +1,39 @@
 <template>
   <div>
     <div>
-      <v-row wrap>
+      <v-row>
         <v-col class="px-2 ma1 text-left">
-          <h1 class="pa-3 ma-3">Dahsboard</h1>
+          <h1 class="pa-3 ma-3 white-text">Dahsboard</h1>
         </v-col>
       </v-row>
     </div>
-    <div class="dashboard-cards ma-3">
+    <div class="dashboard-cards  pa-1 ma-3">
       <v-row wrap>
         <v-card
-          class="info-card  pa-1 ma-3"
+          class="d-block pa-1 ma-3 sm-12"
           elevation="2"
           outlined
           color="grey lighten-4"
           v-for="card in cards"
-          :key="card.title"
-          ><v-card-title class="text-center">{{ card.title }}</v-card-title>
+          :key="card.cardTitle"
+          v-show="card.admin"
+          ><div>
+            <v-card-cardTitle class="text-center pa-3 ma-3">{{
+            card.cardTitle
+          }}</v-card-cardTitle>
+          </div>
 
-          <div>
+          <div class="ma-3 pa-3">
             <v-row>
               <v-col class="text-center">
                 <div
                   id="datos-dashboard"
-                  class="pa-1 ma-1 blue rounded-circle d-inline-block"
+                  class="pa-3 ma-3 blue rounded-circle d-inline-block"
                 >
-                  <v-card-subtitle class="text-center white--text font-weight-bold">{{
-                    card.subtitle
-                  }}</v-card-subtitle>
+                  <v-card-cardValue
+                    class="text-center white--text font-weight-bold"
+                    >{{ card.cardValue }}</v-card-cardValue
+                  >
                 </div>
               </v-col>
             </v-row>
@@ -42,11 +48,16 @@
 export default {
   name: "DashboardCard",
   data: () => ({
+    admin: true,
     cards: [
-      { title: "Total reservas", subtitle: "02" },
-      { title: "Horas en estacionamiento", subtitle: "27" },
-      { title: "Total vehículos registrados", subtitle: "03"},
-      { title: "Reservas canceladas", subtitle: "00"},
+      { cardTitle: "Capacidad total de Vehículos", cardValue: "250", admin: true },
+      { cardTitle: "Usuarios registrados", cardValue: "109", admin: true },
+      { cardTitle: "Vehículos registrados", cardValue: "03", admin: true },
+      { cardTitle: "Reservas realizadas", cardValue: "02", admin: true },
+      { cardTitle: "Reservas canceladas", cardValue: "00", admin: true },
+      { cardTitle: "Total vehículos que han ingresado", cardValue: "1023918", admin: true, },
+      { cardTitle: "Multas", cardValue: "00", admin: true },
+      { cardTitle: "Horas en estacionamiento", cardValue: "27", admin: true },
     ],
   }),
 };
