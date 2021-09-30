@@ -1,5 +1,4 @@
 <template>
-  <div class="formulario fondo">
     <div class="container">
       <h2>FORMULARIO DE RESERVAS</h2>
       <div class="row">
@@ -187,7 +186,6 @@
         </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
