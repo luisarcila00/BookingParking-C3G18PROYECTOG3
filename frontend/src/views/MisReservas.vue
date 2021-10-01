@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import {methods} from "../controllers/Bookings.controller";
+import {bookings} from "../controllers/Bookings.controller";
 import BookingCard from "../components/BookingCards.vue";
 
 export default {
@@ -28,7 +28,7 @@ export default {
     BookingCard,
   },
   mounted() {
-    methods.getBookings()
+    bookings.getBookings()
         .then((response) => {
           this.booking = response.data;
         })
