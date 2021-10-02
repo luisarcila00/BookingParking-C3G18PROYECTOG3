@@ -5,9 +5,14 @@
         <v-list-item-title class="text-h6">
           <v-img contain src="../assets/logo_Booking_Parking_2.png" max-height="50" max-width="100"></v-img>
         </v-list-item-title>
-        <v-list-item-subtitle> Bienvenido {{ this.username }} </v-list-item-subtitle>
+          <v-divider></v-divider>
+        <v-list-item-title class="text-center mt-2">Bienvenido</v-list-item-title>
       </v-list-item-content>
     </v-list-item>
+    <div class="text-center">
+      <v-avatar class="" color="grey darken-1" size="64"></v-avatar>
+      <v-list-item-subtitle>{{ this.username }}</v-list-item-subtitle>
+    </div>
     <v-divider></v-divider>
     <v-list dense nav>
       <v-list-item

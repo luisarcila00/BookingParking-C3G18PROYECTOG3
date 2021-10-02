@@ -7,6 +7,7 @@ import MisVehiculos from '../views/MisVehiculos.vue'
 import Reservas from '../views/Reservas.vue'
 import Formulario from '../views/Formulario.vue'
 
+
 Vue.use(VueRouter)
 
 const routes = [

@@ -1,47 +1,54 @@
 <template>
-  <div>
-    <div>
-      <v-row>
-        <v-col class="px-2 ma1 text-left">
-          <h1 class="pa-3 ma-3 white-text">Dahsboard</h1>
-        </v-col>
-      </v-row>
-    </div>
-    <div class="dashboard-cards pa-1 ma-3">
-      <v-row wrap>
-        <v-card
-          class="d-block pa-1 ma-3 sm-12"
-          elevation="2"
-          outlined
-          color="grey lighten-4"
-          v-for="card in cards"
-          :key="card.cardTitle"
-          v-show="card.admin"
-          ><div>
-            <v-card-cardTitle class="text-center pa-3 ma-3">{{
-              card.cardTitle
-            }}</v-card-cardTitle>
-          </div>
+  <v-container>
+    <v-row>
+      <v-col class="px-2 ma1 text-left">
+        <h1 class="pa-3 ma-3 white-text">Dahsboard</h1>
+      </v-col>
+    </v-row>
+    <v-row wrap>
+      <v-card
+        class="d-block pa-1 ma-3 sm-12"
+        elevation="2"
+        outlined
+        color="grey lighten-4"
+        v-for="card in cards"
+        :key="card.cardTitle"
+        v-show="card.admin"
+        ><div>
+          <v-card-cardTitle class="text-center pa-3 ma-3">{{
+            card.cardTitle
+          }}</v-card-cardTitle>
+        </div>
 
-          <div class="ma-3 pa-3">
-            <v-row>
-              <v-col class="text-center">
-                <div
-                  id="datos-dashboard"
-                  class="pa-3 ma-3 blue rounded-circle d-inline-block"
+        <div class="ma-3 pa-3">
+          <v-row>
+            <v-col class="text-center">
+              <div
+                id="datos-dashboard"
+                class="pa-3 ma-3 orange rounded-circle d-inline-block"
+              >
+                <v-card-cardValue
+                  class="text-center white--text font-weight-bold"
+                  >{{ card.cardValue }}</v-card-cardValue
                 >
-                  <v-card-cardValue
-                    class="text-center white--text font-weight-bold"
-                    >{{ card.cardValue }}</v-card-cardValue
-                  >
-                </div>
-              </v-col>
-            </v-row>
-          </div>
-        </v-card>
-      </v-row>
-    </div>
-  </div>
+              </div>
+            </v-col>
+          </v-row>
+        </div>
+        <div>
+          <v-row>
+            <v-col v-show="hasVehicles">
+              <v-list-item >
+                <v-list-item-content>
+                  <v-list-item-title>{{items1}}</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </v-col>
+          </v-row>
+        </div>
+      </v-card>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
@@ -49,11 +56,14 @@ export default {
   name: "DashboardCard",
   data: () => ({
     admin: true,
+    hasVehicles: Boolean,
+    props: ["items1"],
     cards: [
       {
         cardTitle: "Capacidad total de Vehículos",
         cardValue: "250",
         admin: true,
+        hasVehicles: false
       },
       { cardTitle: "Usuarios registrados", cardValue: "109", admin: true },
       { cardTitle: "Vehículos registrados", cardValue: "03", admin: true },
@@ -72,5 +82,4 @@ export default {
 </script>
 
 <style>
-
 </style>
