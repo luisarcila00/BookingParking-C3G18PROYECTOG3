@@ -1,83 +1,175 @@
 <template>
-  <v-container>
+  <div class="dashboard-card">
     <v-row>
-      <v-col class="px-2 ma1 text-left">
-        <h1 class="pa-3 ma-3 white-text">Dahsboard</h1>
+      <v-col lg="7" cols="12">
+        <v-alert dense text type="success">
+          <strong>¡Ha iniciado sesión exitosamente!</strong>
+        </v-alert>
+        <v-row>
+          <v-col lg="6" cols="12" v-for="stat in stats" :key="stat.title">
+            <v-card elevation="2" class="rounded-lg">
+              <v-card-text class="d-flex justify-space-between align-center">
+                <div class="">
+                  <strong>{{ stat.title }}</strong>
+                </div>
+                <v-avatar :color="stat.color">
+                  <span class="white--text">{{ stat.amount }}</span>
+                </v-avatar>
+
+              </v-card-text>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-col>
+      <v-col lg="5" cols="12">
+        <v-card>
+          <v-card-title>Actividad reciente</v-card-title>
+          <v-timeline align-top dense>
+            <v-timeline-item color="blue" small>
+              <strong>Hace 1 hora</strong>
+              <div class="text-caption">ingreso de vehículo xyz-123</div>
+            </v-timeline-item>
+
+            <v-timeline-item color="red" small>
+              <strong>Hace 2 minutos</strong>
+              <div class="text-caption">Salida de vehículo xyz-123</div>
+            </v-timeline-item>
+          </v-timeline>
+        </v-card>
       </v-col>
     </v-row>
-    <v-row wrap>
-      <v-card
-        class="d-block pa-1 ma-3 sm-12"
-        elevation="2"
-        outlined
-        color="grey lighten-4"
-        v-for="card in cards"
-        :key="card.cardTitle"
-        v-show="card.admin"
-        ><div>
-          <v-card-cardTitle class="text-center pa-3 ma-3">{{
-            card.cardTitle
-          }}</v-card-cardTitle>
-        </div>
+    <v-row>
+      <v-col lg="12" cols="12">
+        <v-data-table
+    :headers="headers"
+    :items="desserts"
+    :items-per-page="5"
+    class="elevation-1"
+  ></v-data-table>
 
-        <div class="ma-3 pa-3">
-          <v-row>
-            <v-col class="text-center">
-              <div
-                id="datos-dashboard"
-                class="pa-3 ma-3 orange rounded-circle d-inline-block"
-              >
-                <v-card-cardValue
-                  class="text-center white--text font-weight-bold"
-                  >{{ card.cardValue }}</v-card-cardValue
-                >
-              </div>
-            </v-col>
-          </v-row>
-        </div>
-        <div>
-          <v-row>
-            <v-col v-show="hasVehicles">
-              <v-list-item >
-                <v-list-item-content>
-                  <v-list-item-title>{{items1}}</v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-            </v-col>
-          </v-row>
-        </div>
-      </v-card>
+      </v-col>
     </v-row>
-  </v-container>
+
+  </div>
 </template>
 
 <script>
 export default {
   name: "DashboardCard",
-  data: () => ({
-    admin: true,
-    hasVehicles: Boolean,
-    props: ["items1"],
-    cards: [
-      {
-        cardTitle: "Capacidad total de Vehículos",
-        cardValue: "250",
-        admin: true,
-        hasVehicles: false
-      },
-      { cardTitle: "Usuarios registrados", cardValue: "109", admin: true },
-      { cardTitle: "Vehículos registrados", cardValue: "03", admin: true },
-      { cardTitle: "Reservas realizadas", cardValue: "02", admin: true },
-      { cardTitle: "Reservas canceladas", cardValue: "00", admin: true },
-      {
-        cardTitle: "Total vehículos que han ingresado",
-        cardValue: "1023918",
-        admin: true,
-      },
-      { cardTitle: "Multas", cardValue: "00", admin: true },
-      { cardTitle: "Horas en estacionamiento", cardValue: "27", admin: true },
-    ],
-  }),
+  data() {
+    return {
+      props: ["items1"],
+      stats: [
+        {
+          title: "Capacidad total de vehículos",
+          amount: "250",
+          color: "purple",
+        },
+        {
+          title: "Estacionamientos en uso",
+          amount: "250",
+          color: "deep-purple",
+        },
+        {
+          title: "Estacionamientos disponibles",
+          amount: "250",
+          color: "indigo",
+        },
+        { title: "Usuarios registrados", amount: "109", color: "blue" },
+        { title: "Vehículos registrados", amount: "03", color: "light-blue" },
+        { title: "Reservas realizadas", amount: "02", color: "amber" },
+        { title: "Reservas canceladas", amount: "00", color: "orange" },
+        { title: "Multas", amount: "00", color: "red" },
+        {
+          title: "Total vehículos que han ingresado",
+          amount: "1023918",
+          color: "pink",
+        },
+        { title: "Horas en estacionamiento", amount: "27", color: "blue-grey" },
+      ],
+
+headers: [
+          {
+            text: 'Nombre',
+            align: 'left',
+            sortable: false,
+            value: 'name'
+          },
+          { text: 'Tipo de Vehiculo', value: 'tipo' },
+          { text: 'Marca', value: 'marca' },
+          { text: 'Color', value: 'color' },
+          { text: 'Placa', value: 'placa' },
+          { text: 'Fecha de ingreso', value: 'fecha' },
+          { text: 'Hora de ingreso', value: 'hora' }
+        ],
+        desserts: [
+          {
+            name: 'LUIS EDUARDO ARCILA',
+            tipo: 'Carro',
+            marca: 'RENAULT',
+            color: 'GRIS',
+            placa: 'MMI-268',
+            fecha: '21-09-2021',
+            hora: '10:00 am'
+          },
+          {
+            name: 'ELKIN RAMIREZ',
+            tipo: 'CARRO',
+            marca: 'CHEVROLET',
+            color: 'NEGRO',
+            placa: 'PID-489',
+            fecha: '22-09-2021',
+            hora: '12:00 pm'
+          },
+          {
+            name: 'SEBASTIAN MURILLO',
+            tipo: 'CARRO',
+            marca: 'TOYOTA',
+            color: 'BLANCO',
+            placa: 'JNH-595',
+            fecha: '21-09-2021',
+            hora: '8:00 am'
+          },
+          {
+            name: 'FABIAN GOYENECHE',
+            tipo: 'MOTO',
+            marca: 'SUZUKI',
+            color: 'NEGRO',
+            placa: 'AWR-25C',
+            fecha: '23-09-2021',
+            hora: '10:00 am'
+          },
+          {
+            name: 'PEPITO PEREZ',
+            tipo: 'BICICLETA',
+            marca: 'GW',
+            color: 'NEGRA',
+            placa: '149845',
+            fecha: '21-09-2021',
+            hora: '11:00 am'
+          },
+          {
+            name: 'RAMIRO CANO',
+            tipo: 'MOTO',
+            marca: 'AKT',
+            color: 'BLANCA',
+            placa: 'PIR-25E',
+            fecha: '25-09-2021',
+            hora: '2:00 pm'
+          },
+          {
+            name: 'CARLOS ZAPATA',
+            tipo: 'MOTO',
+            marca: 'HONDA',
+            color: 'VERDE',
+            placa: 'NHD-98B',
+            fecha: '26-09-2021',
+            hora: '8:00 am'
+          },
+
+        ]
+    };
+  },
 };
 </script>
 
