@@ -45,7 +45,18 @@ const routes = [
         path: '/bookings',
         name: 'Mis Reservas',
         component: Bookings
+    },
+    {
+        path: '/asignarCupos',
+        name: 'Asignar Cupos',
+        component: () => import('../views/AsignarCupos.vue')
+    },
+    {
+        path: '/asignarTarifas',
+        name: 'Asignar Tarifas',
+        component: () => import('../views/AsignarTarifas.vue')
     }
+
 
 ]
 
