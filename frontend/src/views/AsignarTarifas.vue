@@ -21,19 +21,19 @@
                                         Tarifas por fracción y/o minutos
                                         </v-card-text>
 
-                                        <v-text-field   label ="Un (1) minuto a quince (15) minutos" :rules ="totalRules" v-model="unoAQuince" type="number" min="0" >
+                                        <v-text-field   label ="Un (1) minuto a quince (15) minutos" :rules ="tarifasRules" v-model="unoAQuince" type="number" min="0" >
                                         </v-text-field>
                                         <v-spacer></v-spacer>
 
-                                        <v-text-field   label ="Quince (15) a treinta (30) minutos" :rules ="totalRules" v-model="quinceATreinta" type="number" min="0" >
+                                        <v-text-field   label ="Quince (15) a treinta (30) minutos" :rules ="tarifasRules" v-model="quinceATreinta" type="number" min="0" >
                                         </v-text-field>
                                         <v-spacer></v-spacer>
 
-                                        <v-text-field   label ="Treinta (30) a cuarenta y cinco (45) minutos" :rules ="totalRules" v-model="treintaACuarentaycinco"  type="number" min="0" >
+                                        <v-text-field   label ="Treinta (30) a cuarenta y cinco (45) minutos" :rules ="tarifasRules" v-model="treintaACuarentaycinco"  type="number" min="0" >
                                         </v-text-field>
                                         <v-spacer></v-spacer>
 
-                                        <v-text-field   label ="Cuarenta y cinco (45) a sesenta (60) minutos" :rules ="totalRules" v-model="CuarentaycincoASesenta"  type="number" min="0" >
+                                        <v-text-field   label ="Cuarenta y cinco (45) a sesenta (60) minutos" :rules ="tarifasRules" v-model="CuarentaycincoASesenta"  type="number" min="0" >
                                         </v-text-field>
                                         <v-spacer></v-spacer>
                                     </v-col>
@@ -42,23 +42,23 @@
                                             Valor por Hora
                                         </v-card-text>
 
-                                        <v-text-field   label ="Una (1) Hora" :rules ="totalRules" v-model="hora" type="number" min="0" >
+                                        <v-text-field   label ="Una (1) Hora" :rules ="tarifasRules" v-model="hora" type="number" min="0" >
                                         </v-text-field>
                                         <v-spacer></v-spacer>
 
-                                        <v-text-field   label ="Dos (2) Horas" :rules ="totalRules" v-model="dosHoras"  type="number" min="0" >
+                                        <v-text-field   label ="Dos (2) Horas" :rules ="tarifasRules" v-model="dosHoras"  type="number" min="0" >
                                         </v-text-field>
                                         <v-spacer></v-spacer>
 
-                                        <v-text-field   label ="Tres (3) Horas" :rules ="totalRules" v-model="tresHoras"  type="number" min="0" >
+                                        <v-text-field   label ="Tres (3) Horas" :rules ="tarifasRules" v-model="tresHoras"  type="number" min="0" >
                                         </v-text-field>
                                         <v-spacer></v-spacer>
 
-                                        <v-text-field   label ="Tres (3) Horas a Ocho (8) Horas" :rules ="totalRules" v-model="tresAOcho"  type="number" min="0" >
+                                        <v-text-field   label ="Tres (3) Horas a Ocho (8) Horas" :rules ="tarifasRules" v-model="tresAOcho"  type="number" min="0" >
                                         </v-text-field>
                                         <v-spacer></v-spacer>
                                         
-                                        <v-text-field   label ="Por cada Hora adicional el valor es de" :rules ="totalRules" v-model="adicional"  type="number" min="0" >
+                                        <v-text-field   label ="Por cada Hora adicional el valor es de" :rules ="tarifasRules" v-model="adicional"  type="number" min="0" >
                                         </v-text-field>
                                         <v-spacer></v-spacer>
                                     </v-col>
@@ -67,7 +67,7 @@
                                             Valor por Día
                                         </v-card-text>
 
-                                        <v-text-field   label ="Un (1) Día" :rules ="totalRules" v-model="hora" type="number" min="0" >
+                                        <v-text-field   label ="Un (1) Día" :rules ="tarifasRules" v-model="dia" type="number" min="0" >
                                         </v-text-field>
                                         <v-spacer></v-spacer>
                                    
@@ -76,7 +76,7 @@
                                             Valor Mensual
                                         </v-card-text>
 
-                                        <v-text-field   label ="Un (1) Mes" :rules ="totalRules" v-model="hora" type="number" min="0" >
+                                        <v-text-field   label ="Un (1) Mes" :rules ="tarifasRules" v-model="mes" type="number" min="0" >
                                         </v-text-field>
                                         <v-spacer></v-spacer>
                                      </v-col>   
@@ -84,7 +84,7 @@
 
                                 <div class="botones">
                             <v-spacer></v-spacer>
-                            <v-btn    color="warning" dark v-on:click="confirmarMostrar()" >
+                            <v-btn    color="warning" dark v-on:click="guardarTarifas()" >
                                 <v-icon left> mdi-check-bold</v-icon>
                                 Confirmar
                             </v-btn>
@@ -106,7 +106,20 @@
 
 <script>
 export default {
+    data: () => ({
 
+        unoAQuince:"", quinceATreinta:"", treintaACuarentaycinco:"", CuarentaycincoASesenta:"",
+        hora:"", dosHoras:"", tresAOcho:"", adicional:"", dia:"", mes:"", 
+        tarifasRules: [
+                    value => !!value || 'Required.',
+                    
+      ]
+    }), methods: {
+        guardarTarifas(){
+
+        }
+
+    }
 }
 </script>
 
