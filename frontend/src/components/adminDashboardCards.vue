@@ -55,7 +55,7 @@
 
 <script>
 export default {
-  name: "DashboardCard",
+  name: "adminDashboardCard",
   data() {
     return {
       props: ["items1"],

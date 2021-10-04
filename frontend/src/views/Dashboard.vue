@@ -4,15 +4,15 @@
       <h3>Dashboard</h3>
     </v-subheader>
     <div class="user-data">
-      <dashboard-cards></dashboard-cards>
+      <admin-dashboard-cards></admin-dashboard-cards>
     </div>
   </div>
 </template>
 
 <script>
-import DashboardCards from "../components/DashboardCards.vue";
+import adminDashboardCards from "../components/adminDashboardCards.vue";
 export default {
-  components: { DashboardCards },
+  components: { adminDashboardCards },
   name: "Dashboard",
 };
 </script>
