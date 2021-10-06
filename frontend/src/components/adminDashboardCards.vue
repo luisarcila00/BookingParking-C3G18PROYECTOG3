@@ -2,7 +2,7 @@
   <div class="dashboard-card">
     <v-row>
       <v-col lg="7" cols="12">
-        <v-alert dense text type="success">
+        <v-alert dense text type="success" class="mx-3">
           <strong>¡Ha iniciado sesión exitosamente!</strong>
         </v-alert>
         <v-row>

@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard">
-    <v-subheader class="d-flex justify-space-between ma-2 pa-2">
+    <v-subheader class="d-flex justify-space-between ma-3 pa-3">
       <h3>Dashboard</h3>
     </v-subheader>
     <div class="user-data">
