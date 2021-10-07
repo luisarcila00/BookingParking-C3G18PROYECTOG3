@@ -19,7 +19,7 @@
     <v-divider></v-divider>
     <v-card-actions>
       <v-btn href="formulario" color="secondary">Registarse</v-btn>
-      <v-btn color="info" @click="loginPage({username:username,password:password})">Ingresar</v-btn>
+      <v-btn color="info" @click="loginPage()">Ingresar</v-btn>
     </v-card-actions>
   </v-card>
 </template>
@@ -36,12 +36,12 @@ export default {
     }
   },
   methods: {
-    loginPage: (datos) => {
+    loginPage() {
       // Tomar email y contraseña para verificar si es válido
-      users.login(datos).then((response) => {
+      users.login({username: this.username, password: this.password}).then((response) => {
         console.log(response)
         this.$emit("update:username", response.data.username);
-        window.location.reload();
+        //window.location.reload();
       }).catch((err) => {
         console.log(err.message)
       });
