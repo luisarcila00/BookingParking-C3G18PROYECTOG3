@@ -14,7 +14,6 @@
           </v-list-item-icon>
         </v-list-item>
       </div>
-
     </v-list>
   </v-menu>
 </template>

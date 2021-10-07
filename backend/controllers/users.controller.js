@@ -1,10 +1,10 @@
-const UsersModel = require('../models/reservas.model')
+const Model = require('../models/users.model')
 
-module.exports = class ReservasApi {
+module.exports = class Api {
     // El controlador que sera llamado para cada acción
     static async getAll(req, res) {
         try {
-            const users = await UsersModel.find()
+            const users = await Model.find()
             res.status(200).json(users)
         } catch (e) {
             res.status(404).json(e.message)
@@ -14,9 +14,9 @@ module.exports = class ReservasApi {
     static async getById(req, res) {
         try {
             const Id = req.params.code
-            const user = await UsersModel.findOne({code: Id})
-            if (!user) return res.status(404).json({message: 'No encontrado en la base de datos'})
-            res.status(200).json(user)
+            const reserva = await Model.findOne({code: Id})
+            if (!reserva) return res.status(404).json({message: 'No encontrado en la base de datos'})
+            res.status(200).json(reserva)
         } catch (e) {
             res.status(400).json(e.message)
         }
@@ -24,9 +24,9 @@ module.exports = class ReservasApi {
 
     static async create(req, res) {
         try {
-            let newUser = req.body
-            newUser = await UsersModel.create(newUser)
-            res.status(201).json(newUser)
+            let reserva = req.body
+            reserva = await Model.create(reserva)
+            res.status(201).json(reserva)
         } catch (e) {
             res.status(400).json({message: e.message})
         }
@@ -34,9 +34,9 @@ module.exports = class ReservasApi {
 
     static async update(req, res) {
         try {
-            let email = req.params.email
+            let code = req.params.code
             const toUpdate = req.body
-            await UsersModel.updateOne({email: email}, toUpdate)
+            await Model.updateOne({code: code}, toUpdate)
             res.status(200).json()
         } catch (e) {
             res.status(400).json({message: e.message})
@@ -45,8 +45,8 @@ module.exports = class ReservasApi {
 
     static async delete(req, res) {
         try {
-            let email = req.params.email
-            await UsersModel.deleteOne({email: email})
+            let code = req.params.code
+            await Model.deleteOne({code: code})
             res.status(200).json()
         } catch (e) {
             res.status(400).json({message: e.message})
