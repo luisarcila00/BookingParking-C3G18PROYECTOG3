@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const bookingsContoller = require('../controllers/bookings.controller')
+const passport = require('passport')
 //Definir rutas
 router.get('/bookings', bookingsContoller.getAll)
 router.get('/booking/:code', bookingsContoller.getById)
