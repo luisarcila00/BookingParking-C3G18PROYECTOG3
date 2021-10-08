@@ -1,4 +1,4 @@
-<template>
+        <template>
   <div class ="tarifas">
       <v-row>
           <v-col >

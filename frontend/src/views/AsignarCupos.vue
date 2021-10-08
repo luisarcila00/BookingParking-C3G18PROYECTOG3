@@ -14,6 +14,8 @@
             
               <v-row align="center" justify="center" >
                 <v-col cols="10">  
+
+                  <v-text-field label="Code" v-model="code"></v-text-field>
                    
 
                   <v-text-field   label ="Total de Cupos" :rules ="totalRules" v-model="totalCup" type="number" min="0" v-on:keyup.enter="confirmarMostrar()">
@@ -30,19 +32,19 @@
 
                   
 
-                  <v-text-field  v-if="isHidden" label ="Cupos Reservados" :rules ="totalRules" v-model="reservadosCup" type="number" min="0" v-bind:max="maximum" v-on:keyup.enter="confirmarMostrarReserv()">
+                  <v-text-field  v-if="isHidden" label ="Cupos Reservados" :rules ="totalRules" v-model="reservadosCup" type="number" min="0" v-bind:max="maximum" v-on:keyup.enter="confirmarMostrarReservas()">
                     <v-icon slot="prepend" > mdi-calendar-remove</v-icon>  
                     </v-text-field>
 
                     <div class="botones" v-if="isHidden">
                     <v-spacer></v-spacer>
-                      <v-btn  x-small color="secondary" dark v-on:click="confirmarMostrarReserv()">
+                      <v-btn  x-small color="secondary" dark v-on:click="confirmarMostrarReservas()">
                         <v-icon left> mdi-check-bold</v-icon>
                         Confirmar
                        </v-btn>
                   </div>
 
-                  <v-text-field  v-if="isHiddenCars" label ="Cupos Carro" :rules ="imgRules" v-model="carroCup" type="number" min="0" v-bind:max="maximumCars" v-on:keyup.enter="confirmarMostrarCar()">
+                  <v-text-field  v-if="isHiddenCars" label ="Cupos Carro" :rules ="totalRules" v-model="carroCup" type="number" min="0" v-bind:max="maximumCars" v-on:keyup.enter="confirmarMostrarCar()">
                     <v-icon slot="prepend" > mdi-car </v-icon>
                   </v-text-field>
 
@@ -56,7 +58,7 @@
 
                  
 
-                  <v-text-field   v-if="isHiddenMot" label ="Cupos Moto" :rules ="imgRules" v-model="motoCup" type="number" min="0" v-bind:max="maximumMot" v-on:keyup.enter="confirmarMostrarMot()">
+                  <v-text-field   v-if="isHiddenMot" label ="Cupos Moto" :rules ="totalRules" v-model="motoCup" type="number" min="0" v-bind:max="maximumMot" v-on:keyup.enter="confirmarMostrarMot()">
                     <v-icon slot="prepend" > mdi-moped </v-icon>
                   </v-text-field>
 
@@ -75,12 +77,27 @@
           </v-hover>
         </v-col>
       </v-row>
+      <v-snackbar v-model="snackbar" >
+      {{ snackbarText }}
 
+      <template v-slot:action="{ attrs }">
+        <v-btn
+          color="pink"
+          text
+          v-bind="attrs"
+          @click="closeConfirmation()"
+        >
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
+  
 
   </div>
 </template>
 
 <script>
+import { createCupo } from "../controllers/Cupos.controller"
 export default {
   data: ()=>({
 
@@ -91,7 +108,11 @@ export default {
     totalRules: [
                     value => !!value || 'Required.',
                     
-      ]
+      ],
+    snackbar: false,
+    snackbarText: ""  
+
+
       
     
 
@@ -106,17 +127,20 @@ export default {
       }
       
     },
-    confirmarMostrarReserv() {
-      if(this.reservadosCup != 0){
-      this.maximumCars = this.totalCup - this.reservadosCup;
-      this.isHiddenCars = !this.isHiddenCars;
+    confirmarMostrarReservas() {
       
-        if(this.reservadosCup > this.maximum){
-          alert("tiene " + this.maximum + " cupos disponibles");
-          this.isHiddenCars = !this.isHiddenCars;
+      
+      
+        if(parseInt(this.reservadosCup)> parseInt(this.maximum)){
+          alert("tiene " + this.maximum + " cupos disponibles ");
+         
+          
+        }else{
+            this.maximumCars = this.totalCup - this.reservadosCup;
+            this.isHiddenCars = !this.isHiddenCars;
         }
 
-      }else {
+      if (this.reservadosCup == 0) {
         alert("Ningún cupo reservado");
       }
       
@@ -124,12 +148,13 @@ export default {
     confirmarMostrarCar() {
       if(this.carroCup != 0){
       
-        this.maximumMot = ((this.totalCup - this.reservadosCup) - this.carroCup);
-      
-        if(this.carroCup > this.maximumCars){
+        
+        if(parseInt(this.carroCup) > parseInt(this.maximumCars)){
           alert("tiene " + this.maximumCars + " cupos disponibles");
+        
           
         }else{
+          this.maximumMot = ((this.totalCup - this.reservadosCup) - this.carroCup);
           this.isHiddenMot = !this.isHiddenMot;
           this.isHiddenSafe = !this.isHiddenSafe;
           
@@ -144,7 +169,7 @@ export default {
       
       
         
-        if(this.motoCup > this.maximumMot){
+        if(parseInt(this.motoCup) > parseInt(this.maximumMot)){
           alert("tiene " + this.maximumMot + " cupos disponibles");
           
 
@@ -155,7 +180,27 @@ export default {
     },
 
     guardar(){
-      //alert("Falta conectar la db")
+      console.log("guardar en db");
+      const cupo = {
+        code: this.code,
+        totalCup: this.totalCup,
+        reservadosCup: this.reservadosCup,
+        carroCup: this.carroCup,
+        motoCup: this.motoCup
+      };
+      createCupo(cupo)
+      .then(() => {
+          this.snackbarText="Guardado correctamente";
+          this.snackbar= true;
+    
+      })
+      .catch((err) => console.error(err));
+
+    },
+
+    closeConfirmation(){
+        this.snackbar= false;
+        
     }
   }
 
