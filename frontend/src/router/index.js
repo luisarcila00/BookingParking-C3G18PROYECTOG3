@@ -5,48 +5,54 @@ import CrearUsuario from '../views/CrearUsuario.vue'
 import Login from '../views/Login.vue'
 import MisVehiculos from '../views/MisVehiculos.vue'
 import Reservas from '../views/Reservas.vue'
+import Bookings from '../views/MisReservas'
 import Formulario from '../views/Formulario.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/',
-    name: 'dashboard',
-    component: Dashboard
-  },
-  {
-    path: '/mis-vehiculos',
-    name: 'mis-vehiculos',
-    component: MisVehiculos
-  },
-  {
-    path: '/Formulario',
-    name: 'Formulario',
-    component: Formulario
-  },
-  {
-    path: '/Login',
-    name: 'Login',
-    component: Login
-  },
-  {
-    path: '/reservas',
-    name: 'reservas',
-    component: Reservas
-  },
-  {
-    path: '/crearusuario',
-    name: 'crearusuario',
-    component: CrearUsuario
-  }
-  
+    {
+        path: '/',
+        name: 'dashboard',
+        component: Dashboard
+    },
+    {
+        path: '/mis-vehiculos',
+        name: 'mis-vehiculos',
+        component: MisVehiculos
+    },
+    {
+        path: '/Formulario',
+        name: 'Formulario',
+        component: Formulario
+    },
+    {
+        path: '/login',
+        name: 'Login',
+        component: Login
+    },
+    {
+        path: '/reservas',
+        name: 'reservas',
+        component: Reservas
+    },
+    {
+        path: '/crearusuario',
+        name: 'crearusuario',
+        component: CrearUsuario
+    },
+    {
+        path: '/bookings',
+        name: 'Mis Reservas',
+        component: Bookings
+    }
+
 ]
 
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
+    mode: 'history',
+    base: process.env.BASE_URL,
+    routes
 })
 
 export default router
