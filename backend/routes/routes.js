@@ -5,6 +5,7 @@ const bookingsContoller = require('../controllers/bookings.controller')
 const usersContoller = require('../controllers/users.controller')
 
 const cuposController = require('../controllers/cupos.controller')
+const tarifasController = require('../controllers/tarifas.controller')
 
 
 const helpers = require('../lib/helpers')
@@ -21,7 +22,13 @@ router.get("/asignarCupos", cuposController.getAll)
 router.get('/asignarCupos/:code', cuposController.getByCode)
 router.post('/asignarCupos', cuposController.create)
 router.put('/asignarCupos/:code', cuposController.update)
-router.delete('/asignarCupos/code', cuposController.delete)
+router.delete('/asignarCupos/:code', cuposController.delete)
+
+router.get('/asignarTarifas/', tarifasController.getAll)
+router.get('/asignarTarifas/:code', tarifasController.getByCode)
+router.post('/asignarTarifas', tarifasController.create)
+router.put('/asignarTarifas/:code', tarifasController.update)
+router.delete('/asignarTarifas/:code', tarifasController.delete)
 
 router.post('/login', passport.authenticate('local.login', {
     //failureRedirect: '/',

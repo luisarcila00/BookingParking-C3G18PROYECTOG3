@@ -21,6 +21,10 @@
                                         Tarifas por fracción y/o minutos
                                         </v-card-text>
 
+                                        <v-text-field   label ="code" :rules ="tarifasRules" v-model="code" type="number" min="0" >
+                                        </v-text-field>
+                                        <v-spacer></v-spacer>
+
                                         <v-text-field   label ="Un (1) minuto a quince (15) minutos" :rules ="tarifasRules" v-model="unoAQuince" type="number" min="0" >
                                         </v-text-field>
                                         <v-spacer></v-spacer>
@@ -33,7 +37,7 @@
                                         </v-text-field>
                                         <v-spacer></v-spacer>
 
-                                        <v-text-field   label ="Cuarenta y cinco (45) a sesenta (60) minutos" :rules ="tarifasRules" v-model="CuarentaycincoASesenta"  type="number" min="0" >
+                                        <v-text-field   label ="Cuarenta y cinco (45) a sesenta (60) minutos" :rules ="tarifasRules" v-model="cuarentaycincoASesenta"  type="number" min="0" >
                                         </v-text-field>
                                         <v-spacer></v-spacer>
                                     </v-col>
@@ -101,22 +105,63 @@
           </v-col>
       </v-row>
 
+      <v-snackbar v-model="snackbar" >
+      {{ snackbarText }}
+
+      <template v-slot:action="{ attrs }">
+        <v-btn
+          color="pink"
+          text
+          v-bind="attrs"
+          @click="closeConfirmation()"
+        >
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
+  
+
   </div>
 </template>
 
 <script>
+import {tarifas} from "../controllers/Tarifas.controller"
 export default {
     data: () => ({
-
-        unoAQuince:"", quinceATreinta:"", treintaACuarentaycinco:"", CuarentaycincoASesenta:"",
-        hora:"", dosHoras:"", tresAOcho:"", adicional:"", dia:"", mes:"", 
+        snackbar: false,
+        snackbarText: "",
+        code: "",    
+        unoAQuince:"", quinceATreinta:"", treintaACuarentaycinco:"", cuarentaycincoASesenta:"",
+        hora:"", dosHoras:"", tresHoras:"", tresAOcho:"", adicional:"", dia:"", mes:"", 
         tarifasRules: [
                     value => !!value || 'Required.',
                     
       ]
     }), methods: {
         guardarTarifas(){
-
+            console.log('tarifa guardada');
+            const tarifa = {
+                code: this.code,
+                unoAQuince: this.unoAQuince,
+                quinceATreinta: this.quinceATreinta,
+                treintaACuarentaycinco: this.treintaACuarentaycinco,
+                cuarentaycincoASesenta: this.cuarentaycincoASesenta,
+                hora: this.hora,
+                dosHoras: this.dosHoras,
+                tresHoras: this.tresHoras,
+                tresAOcho: this.tresAOcho,
+                adicional: this.adicional,
+                dia: this.dia,
+                mes: this.mes
+            };
+            tarifas.createTarifa(tarifa).then(() => {
+                
+                this.snackbarText="Guardado correctamente";
+                this.snackbar=true;
+            }).catch((err) => console.error(err));
+        },
+        closeConfirmation(){
+            this.snackbar= false;
         }
 
     }
