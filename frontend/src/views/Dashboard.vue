@@ -1,29 +1,20 @@
 <template>
   <div class="dashboard">
-    <h1>Dashboard page</h1>
-    <v-container class="my-5">
-      <v-card class="pa-3 ma-3">
-        <v-layout row wrap justify-center>
-          <v-flex xs12 md6>
-            <div class="card-title" src="../assets/bg.jpg">
-              <v-img
-                contain
-                src="../assets/BPLogo.jpeg"
-                max-height="50%"
-                max-width="50%"
-                position="up"
-              ></v-img>
-            </div>
-          </v-flex>
-        </v-layout>
-        
-      </v-card>
-    </v-container>
+    <v-subheader class="d-flex justify-space-between ma-3 pa-3">
+      <h3>Dashboard</h3>
+    </v-subheader>
+    <div class="user-data">
+      <dashboard-cards-admin></dashboard-cards-admin>
+    </div>
   </div>
 </template>
 
 <script>
-export default {};
+import DashboardCardsAdmin from "../components/DashboardCardsAdmin.vue";
+export default {
+  components: { DashboardCardsAdmin },
+  name: "Dashboard",
+};
 </script>
 
 <style>
