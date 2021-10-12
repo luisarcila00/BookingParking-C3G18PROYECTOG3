@@ -39,7 +39,8 @@ app.use((req, res, next) => {
 })
 //Conexion a MongoDB
 const mongoose = require('mongoose')
-mongoose.connect(`mongodb+srv://earamirezba:${process.env.DBPASS}@cluster0.kb6pn.mongodb.net/UserRegister?retryWrites=true&w=majority`).then(() => {
+//mongoose.connect(`mongodb+srv://earamirezba:${process.env.DBPASS}@cluster0.kb6pn.mongodb.net/UserRegister?retryWrites=true&w=majority`).then(() => {
+mongoose.connect(`mongodb+srv://larcila:${process.env.DBPASS}@cluster0.bp4b6.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`).then(() => {
     console.log('Connected to database')
 }).catch((err) => console.error(err.message))
 //Definir las rutas

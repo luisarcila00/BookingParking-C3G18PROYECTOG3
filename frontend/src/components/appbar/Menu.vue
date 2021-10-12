@@ -6,29 +6,48 @@
       </v-btn>
     </template>
     <v-list>
-      <div v-for="(item, i) in items" :key="i">
-        <v-list-item link :to="item.route" v-if="item.show">
-          <v-list-item-title>{{ item.title }}</v-list-item-title>
-          <v-list-item-icon>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-icon>
-        </v-list-item>
-      </div>
+      <v-list-item v-if="!isLoggedIn" link to="/login">
+        <v-list-item-title>Iniciar sesión</v-list-item-title>
+      </v-list-item>
+      <v-list-item v-if="isLoggedIn" link @click="logOut()">
+        <v-list-item-title>Cerrar sesión</v-list-item-title>
+      </v-list-item>
     </v-list>
   </v-menu>
 </template>
 
 <script>
+import {users} from '../../controllers/Users.controller'
 export default {
   name: "Menu",
   data: () => ({
     items: [
       {title: "Iniciar sesión", icon: "mdi-login", route: "/login", show: true},
-      {title: "Perfil", icon: "mdi-face-man-profile", route: "/logout"},
-      {title: "Cerrar sesión", icon: "mdi-location-exit", route: "/logout"},
+      {title: "Cerrar sesión", icon: "mdi-location-exit", route: "/logout", show: true},
     ],
     offset: true
   }),
+  computed: {
+    isLoggedIn() {
+      return sessionStorage.getItem("username") != undefined;
+    },
+  },
+  methods: {
+    logOut() {
+      users.logout().then((response) => {
+        console.log(response)
+        sessionStorage.clear()
+        this.$router.push('Inicio')
+        window.location.reload();
+      }).catch((err) => {
+        sessionStorage.clear()
+        this.$router.push('Inicio')
+        window.location.reload();
+        console.log(err.message)
+      });
+    }
+  },
+
 }
 </script>
 

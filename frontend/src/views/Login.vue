@@ -24,7 +24,7 @@
   </v-card>
 </template>
 <script>
-import {users} from '../controllers/users.controller'
+import {users} from '../controllers/Users.controller'
 
 export default {
   data() {
@@ -41,7 +41,9 @@ export default {
       users.login({username: this.username, password: this.password}).then((response) => {
         console.log(response)
         this.$emit("update:username", response.data.username);
-        //window.location.reload();
+        sessionStorage.setItem('role',response.data.roles)
+        this.$router.push('Dashboard')
+        window.location.reload();
       }).catch((err) => {
         console.log(err.message)
       });

@@ -8,6 +8,7 @@ const users = {
     editUser: (user, code) => httpClient.post(END_POINT + '/' + code, user),
     deleteUser: (code) => httpClient.get(END_POINT + '/' + code),
     login: (data) => httpClient.post('/api/login', data),
+    logout: () => httpClient.post('/api/logout'),
 }
 export {
     users

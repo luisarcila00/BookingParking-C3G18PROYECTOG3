@@ -3,7 +3,7 @@
     <Navbar @hidden-show-drawer="drawer = !drawer" :mainTitle="mainTitle" :username="username"/>
     <navigationDrawer :mainTitle="mainTitle" :username="username" :drawer="drawer"/>
     <v-main>
-      <router-view @update:username="username= $event"></router-view>
+      <router-view @update:username="loggedin($event)"></router-view>
     </v-main>
     <Footer/>
   </v-app>
@@ -19,16 +19,18 @@ export default {
   components: {Navbar, Footer, navigationDrawer},
   data: () => ({
     mainTitle: "Booking Parking",
-    username: "",
+    username: sessionStorage.getItem("username"),
+    role: sessionStorage.getItem("role"),
     drawer: true
   }),
   methods: {
     loggedin(data) {
       console.log(data)
-      debugger
+      this.username = data
+      sessionStorage.setItem('username', data)
       return
     }
-  }
+  },
 };
 </script>
 <style lang="scss">
