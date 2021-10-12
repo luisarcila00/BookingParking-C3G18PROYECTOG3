@@ -4,7 +4,7 @@
       <h3>Dashboard</h3>
     </v-subheader>
     <div class="user-data">
-      <dashboard-cards-admin></dashboard-cards-admin>
+      <DashboardCardsAdmin></DashboardCardsAdmin>
     </div>
   </div>
 </template>

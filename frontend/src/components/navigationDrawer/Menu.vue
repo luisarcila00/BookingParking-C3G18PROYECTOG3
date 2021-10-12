@@ -1,18 +1,18 @@
-<template>    
-    <div>
-      <v-list dense nav>
-        <div v-for="item in items" :key="item.title">
-          <v-list-item link :to="item.route" v-if="item.show">
-            <v-list-item-icon>
-              <v-icon class="menu-icon">{{ item.icon }}</v-icon>
-            </v-list-item-icon>
-            <v-list-item-content>
-              <v-list-item-title>{{ item.title }}</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-        </div>
-      </v-list>
-    </div>
+<template>
+  <div>
+    <v-list dense nav>
+      <div v-for="item in items" :key="item.title">
+        <v-list-item link :to="item.route" v-if="item.show">
+          <v-list-item-icon>
+            <v-icon class="menu-icon">{{ item.icon }}</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </div>
+    </v-list>
+  </div>
 </template>
 
 <script>
