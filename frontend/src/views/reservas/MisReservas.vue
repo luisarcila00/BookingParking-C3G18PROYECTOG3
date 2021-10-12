@@ -2,7 +2,7 @@
   <div class="bookings">
     <!--<v-btn color="primary" to="/products/new">New product</v-btn>-->
     <v-container>
-      <h1>Mis reservas</h1>
+      <h1>Reservas</h1>
       <v-row>
         <v-col
             v-for="booking in bookings"
@@ -19,24 +19,32 @@
 </template>
 
 <script>
-import {bookings} from "../controllers/Bookings.controller";
-import BookingCard from "../components/BookingCards.vue";
+import {bookings} from "../../controllers/Bookings.controller";
+import BookingCard from "../../components/BookingCards.vue";
 
 export default {
+  props:["item"],
   name: "MisReservas",
   components: {
     BookingCard,
   },
-  mounted() {
-    bookings.getBookings()
+  data(){
+    return {
+      bookings: [],
+    };
+  },
+ 
+  created() {
+    bookings.getAllBookings() 
         .then((response) => {
-          this.booking = response.data;
+          this.bookings = response.data;
         })
         .catch((err) => console.error(err));
-  },
+  }
 }
+
 </script>
 
-<style scoped>
+<style>
 
 </style>
