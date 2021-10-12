@@ -10,16 +10,18 @@
       </v-card-title>
       <v-card-text>
         <v-form class="px-3" ref="form">
-          <v-text-field v-model="title" label="Nombre" name="name" prepend-icon="mdi-account" type=text
+          <v-text-field v-model="name" label="Nombre" name="name" prepend-icon="mdi-account" type=text
                         :rules="inputRules"></v-text-field>
-          <v-text-field v-model="title" label="correo" prepend-icon="mdi-email" type=mail
+          <v-text-field v-model="correo" label="correo" prepend-icon="mdi-email" type=mail
                         :rules="inputRules"></v-text-field>
-          <v-text-field v-model="title" label="No. celular" prepend-icon="mdi-cellphone-basic" type=mail
+          <v-text-field v-model="celular" label="No. celular" prepend-icon="mdi-cellphone-basic" type=mail
                         :rules="inputRules"></v-text-field>
-          <v-text-field v-model="title" label="Password" prepend-icon="mdi-lock" type=password
+          <v-text-field v-model="password" label="Password" prepend-icon="mdi-lock" type=password
+                        :rules="inputRules"></v-text-field>
+          <v-text-field v-model="confirmpassword" label="Confirm Password" prepend-icon="mdi-lock" type=password
                         :rules="inputRules"></v-text-field>
           <v-spacer></v-spacer>
-          <v-btn flat @click="submit" class="success mx-0 mt-3">Registrarse</v-btn>
+          <v-btn flat @click="register()" class="success mx-0 mt-3">Registrarse</v-btn>
         </v-form>
       </v-card-text>
     </v-card>
@@ -28,17 +30,41 @@
 </template>
 
 <script>
+import { usersRegisters } from "../controllers/UserRegister.controller";
 export default {
   data() {
     return {
-      resgitration: {
+      resgistration: {
         name: "",
         email: "",
         password: "",
         confirm_password: ""
       }
+    };
+  },
+  methods: {
+    async usersRegisters() {
+      usersRegisters.createUser()
+      this.$v.$touch();
+      this.$store
+        .dispatch("register", {
+          name: this.name,
+          email: this.email,
+          password: this.password,
+          confirm_password: this.confirm_password
+        })
+        .then(() => {
+          this.$router.push({ name: "App" });
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   }
+  
+  
+
+
 };
 </script>
 
