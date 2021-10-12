@@ -1,11 +1,11 @@
-const reservasModel = require('../models/reservas.model')
+const Model = require('../models/UserRegister.model')
 
-module.exports = class ReservasApi {
+module.exports = class RegistrosApi {
     // El controlador que sera llamado para cada acción
     static async getAll(req, res) {
         try {
-            const reservas = await reservasModel.find()
-            res.status(200).json(reservas)
+            const users = await Model.find()
+            res.status(200).json(users)
         } catch (e) {
             res.status(404).json(e.message)
         }
@@ -14,7 +14,7 @@ module.exports = class ReservasApi {
     static async getById(req, res) {
         try {
             const Id = req.params.code
-            const reserva = await reservasModel.findOne({code: Id})
+            const reserva = await Model.findOne({code: Id})
             if (!reserva) return res.status(404).json({message: 'No encontrado en la base de datos'})
             res.status(200).json(reserva)
         } catch (e) {
@@ -25,7 +25,7 @@ module.exports = class ReservasApi {
     static async create(req, res) {
         try {
             let reserva = req.body
-            reserva = await reservasModel.create(reserva)
+            reserva = await Model.create(reserva)
             res.status(201).json(reserva)
         } catch (e) {
             res.status(400).json({message: e.message})
@@ -34,9 +34,9 @@ module.exports = class ReservasApi {
 
     static async update(req, res) {
         try {
-            let id = req.params.id
+            let code = req.params.code
             const toUpdate = req.body
-            await reservasModel.updateOne({id: id}, toUpdate)
+            await Model.updateOne({code: code}, toUpdate)
             res.status(200).json()
         } catch (e) {
             res.status(400).json({message: e.message})
@@ -45,8 +45,8 @@ module.exports = class ReservasApi {
 
     static async delete(req, res) {
         try {
-            let id = req.params.id
-            await reservasModel.deleteOne({id: id})
+            let code = req.params.code
+            await Model.deleteOne({code: code})
             res.status(200).json()
         } catch (e) {
             res.status(400).json({message: e.message})
