@@ -4,9 +4,8 @@ import Inicio from '../views/Inicio.vue'
 import Dashboard from '../views/Dashboard.vue'
 import CrearUsuario from '../views/CrearUsuario.vue'
 import Login from '../views/Login.vue'
-import MisVehiculos from '../views/MisVehiculos.vue'
-import Reservas from '../views/Reservas.vue'
-import Bookings from '../views/MisReservas'
+import Reservas from '../views/reservas/Reservas.vue'
+import Bookings from '../views/reservas/MisReservas'
 import Formulario from '../views/Formulario.vue'
 
 Vue.use(VueRouter)
@@ -23,11 +22,6 @@ const routes = [
         component: Dashboard
     },
     {
-        path: '/mis-vehiculos',
-        name: 'mis-vehiculos',
-        component: MisVehiculos
-    },
-    {
         path: '/Formulario',
         name: 'Formulario',
         component: Formulario
@@ -42,6 +36,11 @@ const routes = [
         name: 'reservas',
         component: Reservas
     },
+    {
+        path: '/reservas/:id',
+        name: 'Editar Reserva',
+        component: Reservas
+      },
     {
         path: '/crearusuario',
         name: 'crearusuario',
