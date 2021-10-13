@@ -1,24 +1,36 @@
 <template>
   <div class="home">
-    <section class="hero is-dark">
-      <div class="hero-body">
-        <div class="container">
-          <h1 class="title">Bienvenido a booking parking</h1>
-          <h2 class="subtitle">
-            Inicia sesión o registrate para poder acceder a todos los beneficios
-          </h2>
-        </div>
-      </div>
-    </section>
+    <v-row>
+      <v-col>
+            <div class="container" >
+              <h1 class="title">Bienvenido a booking parking</h1>
+              <h2 class="subtitle">
+                ¡Encuentra un lugar de estacionamiento cerca a ti! Regístrate
+                para realizar reservas y acceder a otros beneficios de nuestra
+                plataforma.
+              </h2>
+            </div>
+
+      </v-col>
+      <v-col>
+        <login></login>
+      </v-col>
+    </v-row>
   </div>
 </template>
 
 <script>
+import Login from "./Login.vue";
 export default {
-
-}
+  components: { Login },
+};
 </script>
 
 <style>
-
+.home {
+  background: #B4C2B5;
+}
+*{
+  font-family: "Roboto";
+}
 </style>

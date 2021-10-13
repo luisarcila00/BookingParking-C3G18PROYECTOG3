@@ -18,4 +18,8 @@ export default {
 </script>
 
 <style>
+.dashboardl{
+  background-color: #B4C2B5;
+  margin-block: 1px;
+}
 </style>

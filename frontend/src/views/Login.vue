@@ -1,5 +1,5 @@
 <template>
-  <v-card width="600" class="mx-auto mt-9">
+  <v-card width="600" class="mx-auto mt-9 rounded-lg" >
     <v-card-title>Iniciar sesión</v-card-title>
     <v-card-text>
       <v-text-field
@@ -16,10 +16,9 @@
           @click:append="showPassword = !showPassword"
       />
     </v-card-text>
-    <v-divider></v-divider>
     <v-card-actions>
-      <v-btn href="formulario" color="secondary">Registarse</v-btn>
-      <v-btn color="info" @click="loginPage()">Ingresar</v-btn>
+      <v-btn elevation="2" class="rounded-lg" href="formulario" color="secondary">Registarse</v-btn>
+      <v-btn elevation="2" class="rounded-lg" color="info" @click="loginPage()">Ingresar</v-btn>
     </v-card-actions>
     <v-snackbar v-model="snackbar">
       {{ snackbarText }}
