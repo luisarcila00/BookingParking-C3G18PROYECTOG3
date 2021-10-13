@@ -1,4 +1,5 @@
 const Model = require('../models/ingresos.model')
+const Cupos = require('../models/cupos.model')
 const moment = require('moment')
 module.exports = class Api {
     // El controlador que sera llamado para cada acción
@@ -24,6 +25,8 @@ module.exports = class Api {
 
     static async create(req, res) {
         try {
+            let cupos = await Cupos.findOne({code: '003'})
+            let registros = await Model.count({fecha_salida: ''})
             let reserva = await Model.findOne({placa: req.body.placa})
             if (reserva && !reserva.fecha_salida) {
                 req.body.fecha_salida = moment().format('YYYY-MM-DD HH:mm:ss')
