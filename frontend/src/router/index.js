@@ -7,7 +7,8 @@ import Login from '../views/Login.vue'
 import Reservas from '../views/reservas/Reservas.vue'
 import Bookings from '../views/reservas/MisReservas'
 import Formulario from '../views/Formulario.vue'
-import Vehiculos from '../views/Vehiculos'
+
+
 
 Vue.use(VueRouter)
 
@@ -53,11 +54,6 @@ const routes = [
         component: Bookings
     },
     {
-        path: '/vehiculos',
-        name: 'Registros',
-        component: Vehiculos
-    },
-    {
         path: '/asignarCupos',
         name: 'Asignar Cupos',
         component: () => import('../views/AsignarCupos.vue')
@@ -66,7 +62,14 @@ const routes = [
         path: '/asignarTarifas',
         name: 'Asignar Tarifas',
         component: () => import('../views/AsignarTarifas.vue')
+    },
+    {
+        path: '/config',
+        name: 'Config',
+        component: () => import('../views/Config.vue')
     }
+
+
 
 ]
 

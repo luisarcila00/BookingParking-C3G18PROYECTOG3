@@ -1,5 +1,7 @@
 <template>
   <div class="cupos">
+
+      
       <v-row align="center" justify="center" >
         <v-col cols="12">
 
@@ -89,6 +91,8 @@
         </v-btn>
       </template>
     </v-snackbar>
+  
+
   </div>
 </template>
 
@@ -96,6 +100,8 @@
 import { createCupo } from "../controllers/Cupos.controller"
 export default {
   data: ()=>({
+
+    code:"",
 
     totalCup:"", reservadosCup: "", carroCup: "", motoCup: "",
  
@@ -196,6 +202,7 @@ export default {
 
     closeConfirmation(){
         this.snackbar= false;
+        this.$router.push("/config")
         
     }
   }
