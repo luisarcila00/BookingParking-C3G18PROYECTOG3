@@ -8,6 +8,8 @@ import Reservas from '../views/reservas/Reservas.vue'
 import Bookings from '../views/reservas/MisReservas'
 import Formulario from '../views/Formulario.vue'
 
+
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -50,7 +52,24 @@ const routes = [
         path: '/bookings',
         name: 'Mis Reservas',
         component: Bookings
+    },
+    {
+        path: '/asignarCupos',
+        name: 'Asignar Cupos',
+        component: () => import('../views/AsignarCupos.vue')
+    },
+    {
+        path: '/asignarTarifas',
+        name: 'Asignar Tarifas',
+        component: () => import('../views/AsignarTarifas.vue')
+    },
+    {
+        path: '/config',
+        name: 'Config',
+        component: () => import('../views/Config.vue')
     }
+
+
 
 ]
 
