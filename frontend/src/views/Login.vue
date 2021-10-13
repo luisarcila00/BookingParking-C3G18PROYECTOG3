@@ -21,6 +21,20 @@
       <v-btn href="formulario" color="secondary">Registarse</v-btn>
       <v-btn color="info" @click="loginPage()">Ingresar</v-btn>
     </v-card-actions>
+    <v-snackbar v-model="snackbar">
+      {{ snackbarText }}
+
+      <template v-slot:action="{ attrs }">
+        <v-btn
+            color="pink"
+            text
+            v-bind="attrs"
+            @click="closeConfirmation()"
+        >
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
   </v-card>
 </template>
 <script>
@@ -32,7 +46,9 @@ export default {
       valid: true,
       password: '',
       username: '',
-      showPassword: false
+      showPassword: false,
+      snackbar: false,
+      snackbarText: ""
     }
   },
   methods: {
@@ -41,12 +57,17 @@ export default {
       users.login({username: this.username, password: this.password}).then((response) => {
         console.log(response)
         this.$emit("update:username", response.data.username);
-        sessionStorage.setItem('role',response.data.roles)
+        sessionStorage.setItem('role', response.data.roles)
         this.$router.push('Dashboard')
         window.location.reload();
       }).catch((err) => {
         console.log(err.message)
+        this.snackbarText = err.message;
+        this.snackbar = true;
       });
+    },
+    closeConfirmation() {
+      this.snackbar = false;
     }
   },
 }

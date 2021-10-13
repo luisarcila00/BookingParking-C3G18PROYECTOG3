@@ -4,9 +4,10 @@ const passport = require('passport')
 const bookingsContoller = require('../controllers/bookings.controller')
 const usersContoller = require('../controllers/users.controller')
 const UserRegisterController = require('../controllers/UserRegister.controller')
-
+const auth = require('../lib/auth')
 const cuposController = require('../controllers/cupos.controller')
 const tarifasController = require('../controllers/tarifas.controller')
+const vehiculosController = require('../controllers/ingresos.controller')
 
 
 const helpers = require('../lib/helpers')
@@ -26,23 +27,25 @@ router.post('/user', helpers.encryptPassword, usersContoller.create)
 router.get('/users', usersContoller.getAll)
 
 
-router.get("/asignarCupos", cuposController.getAll)
-router.get('/asignarCupos/:code', cuposController.getByCode)
-router.post('/asignarCupos', cuposController.create)
-router.put('/asignarCupos/:code', cuposController.update)
-router.delete('/asignarCupos/:code', cuposController.delete)
+router.post("/vehicle",auth.verifyAdministrador, vehiculosController.create)
 
-router.get('/asignarTarifas/', tarifasController.getAll)
-router.get('/asignarTarifas/:code', tarifasController.getByCode)
-router.post('/asignarTarifas', tarifasController.create)
-router.put('/asignarTarifas/:code', tarifasController.update)
-router.delete('/asignarTarifas/:code', tarifasController.delete)
+router.get("/asignarCupos",auth.verifyAdministrador, cuposController.getAll)
+router.get('/asignarCupos/:code',auth.verifyAdministrador, cuposController.getByCode)
+router.post('/asignarCupos',auth.verifyAdministrador, cuposController.create)
+router.put('/asignarCupos/:code',auth.verifyAdministrador, cuposController.update)
+router.delete('/asignarCupos/:code',auth.verifyAdministrador, cuposController.delete)
+
+router.get('/asignarTarifas/',auth.verifyAdministrador, tarifasController.getAll)
+router.get('/asignarTarifas/:code',auth.verifyAdministrador, tarifasController.getByCode)
+router.post('/asignarTarifas',auth.verifyAdministrador, tarifasController.create)
+router.put('/asignarTarifas/:code',auth.verifyAdministrador, tarifasController.update)
+router.delete('/asignarTarifas/:code',auth.verifyAdministrador, tarifasController.delete)
 
 
 router.post('/login', passport.authenticate('local.login', {
     //failureRedirect: '/',
     failureFlash: true,
-    session: false,
+    session: true,
 }), (req, res) => {
     req.user.loggedin = true
     res.status(200).json(req.user)

@@ -21,7 +21,9 @@ export default {
     mainTitle: "Booking Parking",
     username: sessionStorage.getItem("username"),
     role: sessionStorage.getItem("role"),
-    drawer: true
+    drawer: true,
+    snackbar: false,
+    snackbarText: ''
   }),
   methods: {
     loggedin(data) {
@@ -29,7 +31,7 @@ export default {
       this.username = data
       sessionStorage.setItem('username', data)
       return
-    }
+    },
   },
 };
 </script>

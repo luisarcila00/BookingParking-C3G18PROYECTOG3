@@ -25,6 +25,7 @@ module.exports = class Api {
 
     static async create(req, res) {
         try {
+            if (!req.body.placa) return res.status(400).json({message: 'Debe ingresar una placa'})
             let cupos = await Cupos.findOne({code: '003'})
             let registros = await Model.count({fecha_salida: ''})
             let reserva = await Model.findOne({placa: req.body.placa})
@@ -32,12 +33,14 @@ module.exports = class Api {
                 req.body.fecha_salida = moment().format('YYYY-MM-DD HH:mm:ss')
                 reserva = await Model.updateOne({placa: req.body.placa}, req.body)
             } else {
+                if (!req.body.type) return res.status(400).json({message: 'Debe ingresar un tipo de vehiculo'})
+                req.body.fecha_salida = ''
                 req.body.fecha_ingreso = moment().format('YYYY-MM-DD HH:mm:ss')
                 reserva = await Model.create(req.body)
             }
             res.status(201).json(reserva)
         } catch (e) {
-            res.status(400).json({message: e.message})
+            res.status(500).json({message: e.message})
         }
     }
 

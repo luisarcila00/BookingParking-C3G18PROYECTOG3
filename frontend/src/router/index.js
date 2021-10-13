@@ -68,9 +68,12 @@ const routes = [
         name: 'Config',
         component: () => import('../views/Config.vue')
     }
-
-
-
+    ,
+    {
+        path: '/vehiculos',
+        name: 'Registrar vehiculo',
+        component: () => import('../views/Vehiculos.vue')
+    }
 ]
 
 const router = new VueRouter({

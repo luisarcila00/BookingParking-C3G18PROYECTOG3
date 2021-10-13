@@ -37,11 +37,11 @@ export default {
       users.logout().then((response) => {
         console.log(response)
         sessionStorage.clear()
-        this.$router.push('Inicio')
+        this.$router.push('')
         window.location.reload();
       }).catch((err) => {
         sessionStorage.clear()
-        this.$router.push('Inicio')
+        this.$router.push('')
         window.location.reload();
         console.log(err.message)
       });
