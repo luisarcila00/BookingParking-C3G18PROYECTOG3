@@ -14,7 +14,7 @@
           </h2>
         </div>
       </v-col>
-      <v-col lg="4" cols="12">
+      <v-col lg="6" cols="12">
         <login></login>
       </v-col>
     </v-row>

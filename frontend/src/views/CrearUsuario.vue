@@ -2,7 +2,7 @@
   <div class="container">
     <h3 class="titles">Registrar nuevo usuario</h3>
     <div class="row">
-      <div class="col m12 card-panel">
+      <div class="col m12 card-panel rounded-lg">
         <validation-observer ref="observer" v-slot="{ invalid }">
           <form @submit.prevent="submit">
             <validation-provider

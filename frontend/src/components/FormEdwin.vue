@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-      <h2 class="titles">Reservas</h2>
+      <h2 class="titles">Registrar nueva reserva</h2>
       <div class="row">
         <div class="col m12 card-panel">
           <validation-observer
@@ -164,7 +164,7 @@
               </validation-provider>
 
 
-              <div class="col m6">
+              <div class="col m6 text--align-center">
                 <v-btn @click="GuardarReserva()" class="ma-2" color="success" :disabled="invalid">Enviar</v-btn>
 
                 <v-btn @click="clear()" class="ma-2" color="normal">Borrar</v-btn>
