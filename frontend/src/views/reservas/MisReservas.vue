@@ -2,7 +2,7 @@
   <div class="bookings">
     <!--<v-btn color="primary" to="/products/new">New product</v-btn>-->
     <v-container>
-      <h1>Reservas</h1>
+      <h1 class="titles">Reservas</h1>
       <v-row>
         <v-col
             v-for="booking in bookings"
@@ -46,5 +46,17 @@ export default {
 </script>
 
 <style>
-
+* {
+  font-family: "Roboto";
+}
+.titles {
+  color: #fa6f41;
+  text-align: center;
+  font-size: 48px;
+}
+.subtitles {
+  color: #1c1724;
+  text-align: center;
+  font-size: 32px;
+}
 </style>

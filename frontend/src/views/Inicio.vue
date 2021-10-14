@@ -1,18 +1,20 @@
 <template>
   <div class="home">
     <v-row>
-      <v-col>
-            <div class="container" >
-              <h1 class="title">Bienvenido a booking parking</h1>
-              <h2 class="subtitle">
-                ¡Encuentra un lugar de estacionamiento cerca a ti! Regístrate
-                para realizar reservas y acceder a otros beneficios de nuestra
-                plataforma.
-              </h2>
-            </div>
-
+      <v-col lg="6" cols="12">
+        <div class="container">
+          <h1 class="titles">¡Bienvenido a Booking parking!</h1>
+          <h2 class="subtitles">
+            ¡Administrar y gestionar tu parqueadero nunca fue más fácil!
+          </h2>
+          <h2 class="subtitles">
+            - Realiza reservas, edita y cancela.<br />
+            - Gestiona el ingreso de y salida de vehículos.<br />
+            - Paga en línea tu mensualidad, día o fracción.
+          </h2>
+        </div>
       </v-col>
-      <v-col>
+      <v-col lg="4" cols="12">
         <login></login>
       </v-col>
     </v-row>
@@ -27,10 +29,17 @@ export default {
 </script>
 
 <style>
-.home {
-  background: #B4C2B5;
-}
-*{
+* {
   font-family: "Roboto";
+}
+.titles {
+  color: #fa6f41;
+  text-align: center;
+  font-size: 48px;
+}
+.subtitles {
+  color: #1c1724;
+  text-align: center;
+  font-size: 32px;
 }
 </style>
