@@ -1,7 +1,7 @@
 <template>
   <div class="cupos">
 
-      
+
       <v-row align="center" justify="center" >
         <v-col cols="12">
 
@@ -13,10 +13,10 @@
 
             
               <v-row align="center" justify="center" >
-                <v-col cols="10">  
+                <v-col cols="10">
 
                   <v-text-field label="Code" v-model="code"></v-text-field>
-                   
+
 
                   <v-text-field   label ="Total de Cupos" :rules ="totalRules" v-model="totalCup" type="number" min="0" v-on:keyup.enter="confirmarMostrar()">
                     <v-icon slot="prepend" > mdi-traffic-cone </v-icon>
@@ -30,7 +30,7 @@
                        </v-btn>
                   </div>
 
-                  
+
 
                   <v-text-field  v-if="isHidden" label ="Cupos Reservados" :rules ="totalRules" v-model="reservadosCup" type="number" min="0" v-bind:max="maximum" v-on:keyup.enter="confirmarMostrarReservas()">
                     <v-icon slot="prepend" > mdi-calendar-remove</v-icon>  
@@ -56,13 +56,13 @@
                        </v-btn>
                   </div>
 
-                 
+
 
                   <v-text-field   v-if="isHiddenMot" label ="Cupos Moto" :rules ="totalRules" v-model="motoCup" type="number" min="0" v-bind:max="maximumMot" v-on:keyup.enter="confirmarMostrarMot()">
                     <v-icon slot="prepend" > mdi-moped </v-icon>
                   </v-text-field>
 
-                  
+
 
                   <div class="safe" v-if="isHiddenSafe">
                       <v-btn @click="guardar(); confirmarMostrarMot()"   color="primary" >
@@ -70,7 +70,7 @@
                         Guardar
                       </v-btn>
                   </div>
-                  
+
                 </v-col> 
               </v-row>  
             </v-card>
@@ -91,7 +91,7 @@
         </v-btn>
       </template>
     </v-snackbar>
-  
+
 
   </div>
 </template>
@@ -104,18 +104,18 @@ export default {
     code:"",
 
     totalCup:"", reservadosCup: "", carroCup: "", motoCup: "",
- 
+
     isHidden: false,  isHiddenCars: false, isHiddenMot: false, isHiddenSafe: false,
     maximum:"", maximumCars:"", maximumMot:"",
     totalRules: [
                     value => !!value || 'Required.',
-                    
+
       ],
     snackbar: false,
-    snackbarText: ""  
+    snackbarText: ""
 
 
-      
+
     
 
   }),

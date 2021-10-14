@@ -9,16 +9,11 @@ passport.use('local.login', new LocalStrategy((username, password, done) => {
             if (!user) return done(null, false, {type: "error", "message": "El usuario no existe."});
             const passwordIsValid = helpers.matchPassword(password, user.password)
             if (!passwordIsValid) return done(null, false, {type: "error", "message": "Contraseña incorrecta."});
-            const authorities = [];
-            //for (let i = 0; i < user.roles.length; i++) {
-            //   authorities.push("ROLE_" + user.roles[i].name.toUpperCase());
-            // }
-            // user details
             const user_information = {
                 id: user._id,
                 username: user.username,
                 email: user.username,
-                roles: 'user',
+                roles: user.rol,
             }
             return done(null, user_information);
         });
@@ -30,7 +25,7 @@ passport.serializeUser(function (user, done) {
 });
 
 passport.deserializeUser(function (id, done) {
-    User.findById(id, function (err, user) {
+    User.findById(id.id, function (err, user) {
         done(err, user);
     });
 });

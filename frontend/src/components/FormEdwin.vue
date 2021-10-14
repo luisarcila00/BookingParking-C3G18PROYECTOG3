@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-      <h2>FORMULARIO DE RESERVAS</h2>
+      <h2>Reservas</h2>
       <div class="row">
         <div class="col m12 card-panel">
           <validation-observer

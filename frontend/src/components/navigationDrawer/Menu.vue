@@ -44,9 +44,9 @@ export default {
           show: true,
         },
         {
-          title: "Mis vehículos",
+          title: "Registrar vehiculo",
           icon: "mdi-car",
-          route: "/mis-vehiculos",
+          route: "/vehiculos",
           show: true,
         },
         {
