@@ -38,13 +38,13 @@ export default {
           show: true,
         },
         {
-          title: "Crear Usuarios",
+          title: "Registrar usuario",
           icon: "mdi-account",
           route: "/CrearUsuario",
           show: true,
         },
         {
-          title: "Registrar vehiculo",
+          title: "Registrar ingreso/salida",
           icon: "mdi-car",
           route: "/vehiculos",
           show: true,
@@ -56,7 +56,7 @@ export default {
           show: false,
         },
         {
-          title: "Reservas",
+          title: "Realizar reserva",
           icon: "mdi-calendar-month",
           route: "/reservas",
           show: true,

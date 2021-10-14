@@ -23,10 +23,10 @@
       </v-col>
       <v-col lg="5" cols="12">
         <v-card>
-          <v-card-title>Actividad reciente</v-card-title>
+          <v-card-title class="subtitles">Actividad reciente</v-card-title>
           <v-timeline align-top dense>
             <v-timeline-item color="blue" small>
-              <strong>Hace 1 hora</strong>
+              <strong color="#1c1724">Hace 1 hora</strong>
               <div class="text-caption">ingreso de vehículo xyz-123</div>
             </v-timeline-item>
 

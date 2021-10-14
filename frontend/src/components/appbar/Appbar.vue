@@ -1,10 +1,12 @@
 <template>
-  <v-app-bar app dark src="../../assets/bg_black.png">
+<div>
+    <v-app-bar  app dark color="#FA6F41">
     <v-app-bar-nav-icon @click="showDrawer()"></v-app-bar-nav-icon>
     <v-toolbar-title>{{ this.mainTitle }}</v-toolbar-title>
     <v-spacer></v-spacer>
     <Menu/>
   </v-app-bar>
+</div>
 </template>
 
 <script>
@@ -34,5 +36,6 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+
 </style>

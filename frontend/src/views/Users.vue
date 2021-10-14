@@ -5,7 +5,7 @@
           :headers="headers"
           :items="desserts"
           :items-per-page="5"
-          class="elevation-1"
+          class="elevation-2 rounded-lg"
       ></v-data-table>
 
     </v-col>
