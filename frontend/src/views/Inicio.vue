@@ -7,7 +7,7 @@
           <h2 class="subtitles">
             ¡Administrar y gestionar tu parqueadero nunca fue más fácil!
           </h2>
-          <h2 class="subtitles">
+          <h2 class="hometext">
             - Realiza reservas, edita y cancela.<br />
             - Gestiona el ingreso de y salida de vehículos.<br />
             - Paga en línea tu mensualidad, día o fracción.
@@ -41,5 +41,10 @@ export default {
   color: #1c1724;
   text-align: center;
   font-size: 32px;
+}
+.hometext {
+  color: #1c1724;
+  text-align: left;
+  font-size: 24px;
 }
 </style>

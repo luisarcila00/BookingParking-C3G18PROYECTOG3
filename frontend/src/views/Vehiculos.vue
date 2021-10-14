@@ -1,42 +1,47 @@
 <template>
- <div>
-   <h2 class="titles">Registrar ingreso/salida de vehículo</h2>
+  <div>
+    <h2 class="titles">Registrar ingreso/salida de vehículo</h2>
     <v-card elevation="2" width="600" class="rounded-lg mx-auto mt-9">
-    
-    <v-card-text>
-      <v-text-field label="Placa" prepend-icon="mdi-minus" v-model="placa" />
-      <v-select
-        v-model="type"
-        :items="['Carro', 'Moto']"
-        label="Tipo de Vehiculo"
-        data-vv-name="select"
-        required
-      ></v-select>
-    </v-card-text>
-    <v-divider></v-divider>
-    <v-card-actions>
-      <v-btn elevation="2" class="rounded-lg" color="info" @click="registrar()"
-        >Registrar</v-btn
-      >
-    </v-card-actions>
-    <v-snackbar elevation="2" class="rounded-lg" v-model="snackbar">
-      {{ snackbarText }}
+      <v-card-text>
+        <v-text-field label="Placa" prepend-icon="mdi-minus" v-model="placa" />
+        <v-select
+          v-model="type"
+          :items="['Carro', 'Moto']"
+          label="Tipo de Vehiculo"
+          data-vv-name="select"
+          required
+        ></v-select>
+      </v-card-text>
 
-      <template v-slot:action="{ attrs }">
-        <v-btn
-          color="pink"
-          text
-          v-bind="attrs"
-          @click="closeConfirmation()"
-          elevation="2"
-          class="rounded-lg"
-        >
-          Close
-        </v-btn>
-      </template>
-    </v-snackbar>
-  </v-card>
- </div>
+      <div class="d-flex justify-center align-center">
+        <v-card-actions>
+          <v-btn
+            elevation="2"
+            class="rounded-lg"
+            color="success"
+            @click="registrar()"
+            >Registrar</v-btn
+          >
+        </v-card-actions>
+      </div>
+      <v-snackbar elevation="2" class="rounded-lg" v-model="snackbar">
+        {{ snackbarText }}
+
+        <template v-slot:action="{ attrs }">
+          <v-btn
+            color="pink"
+            text
+            v-bind="attrs"
+            @click="closeConfirmation()"
+            elevation="2"
+            class="rounded-lg"
+          >
+            Close
+          </v-btn>
+        </template>
+      </v-snackbar>
+    </v-card>
+  </div>
 </template>
 
 <script>
