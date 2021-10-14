@@ -1,6 +1,8 @@
 <template>
-  <v-card elevation="2" width="600" class="rounded-lg mx-auto mt-9">
-    <v-card-title>Registrar Ingreso/Salida</v-card-title>
+ <div>
+   <h2 class="titles">Registrar ingreso/salida de vehículo</h2>
+    <v-card elevation="2" width="600" class="rounded-lg mx-auto mt-9">
+    
     <v-card-text>
       <v-text-field label="Placa" prepend-icon="mdi-minus" v-model="placa" />
       <v-select
@@ -34,6 +36,7 @@
       </template>
     </v-snackbar>
   </v-card>
+ </div>
 </template>
 
 <script>
@@ -83,5 +86,18 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
+* {
+  font-family: "Roboto";
+}
+.titles {
+  color: #fa6f41;
+  text-align: center;
+  font-size: 48px;
+}
+.subtitles {
+  color: #1c1724;
+  text-align: center;
+  font-size: 32px;
+}
 </style>

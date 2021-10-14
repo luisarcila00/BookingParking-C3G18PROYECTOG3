@@ -2,7 +2,7 @@
   <div class="bookings">
     <!--<v-btn color="primary" to="/products/new">New product</v-btn>-->
     <v-container>
-      <h1 class="titles">Reservas</h1>
+
       <v-row>
         <v-col
             v-for="booking in bookings"

@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-      <h2>Reservas</h2>
+      <h2 class="titles">Reservas</h2>
       <div class="row">
         <div class="col m12 card-panel">
           <validation-observer
@@ -165,9 +165,9 @@
 
 
               <div class="col m6">
-                <v-btn @click="GuardarReserva()" color="success" :disabled="invalid">Enviar</v-btn>
+                <v-btn @click="GuardarReserva()" class="ma-2" color="success" :disabled="invalid">Enviar</v-btn>
 
-                <v-btn @click="clear()" color="error">Borrar </v-btn>
+                <v-btn @click="clear()" class="ma-2" color="normal">Borrar</v-btn>
               </div>
               <v-snackbar v-model="snackbar">
               {{ snackbarText }}
@@ -298,5 +298,18 @@ export default {
 </script>
 
 <style>
-
+ * {
+  font-family: "Roboto";
+}
+.titles {
+  color: #fa6f41;
+  text-align: center;
+  font-size: 48px;
+  
+}
+.subtitles {
+  color: #1c1724;
+  text-align: center;
+  font-size: 32px;
+}
 </style>
