@@ -6,8 +6,9 @@ const cors = require('cors'); // habilita la conexion desde cualquier fuente
 const passport = require('passport')
 require('./lib/passport');
 const session = require('express-session');
-const moment = require('moment');
+const moment = require('moment-timezone');
 moment.locale('es')
+moment.tz("America/Bogota").format();
 const flash = require('connect-flash');
 const app = express();
 
@@ -37,6 +38,7 @@ app.use((req, res, next) => {
     res.locals.successes = req.flash("success");
     next()
 })
+
 //Conexion a MongoDB
 const mongoose = require('mongoose')
 mongoose.connect(`mongodb+srv://larcila:${process.env.DBPASS}@cluster0.bp4b6.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`).then(() => {
@@ -44,6 +46,15 @@ mongoose.connect(`mongodb+srv://larcila:${process.env.DBPASS}@cluster0.bp4b6.mon
 }).catch((err) => console.error(err.message))
 //Definir las rutas
 app.use('/api', require('./routes/routes'))
+
+//Configuracion en produccion
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(__dirname + '/site/'))
+    app.use('*',(req,res)=>{
+        res.sendfile(__dirname+'/site/index.html')
+    })
+}
+
 //Iniciar servidor
 const port = process.env.PORT
 app.listen(port, () => {

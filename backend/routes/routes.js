@@ -26,7 +26,7 @@ router.delete('/booking/:id', bookingsContoller.delete)
 router.post('/user', helpers.encryptPassword, usersContoller.create)
 router.get('/users', usersContoller.getAll)
 
-
+router.get("/vehicles",auth.verifyAdministrador, vehiculosController.getAll)
 router.post("/vehicle",auth.verifyAdministrador, vehiculosController.create)
 
 router.get("/asignarCupos",auth.verifyAdministrador, cuposController.getAll)

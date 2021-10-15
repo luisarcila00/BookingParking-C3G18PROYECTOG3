@@ -30,7 +30,8 @@ export default {
       console.log(data)
       this.username = data
       sessionStorage.setItem('username', data)
-      return
+      this.$router.push("Dashboard");
+      window.location.reload();
     },
   },
 };

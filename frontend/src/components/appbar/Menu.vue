@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import {users} from '../../controllers/users.controller'
+import {users} from '../../controllers/Users.controller'
 export default {
   name: "Menu",
   data: () => ({

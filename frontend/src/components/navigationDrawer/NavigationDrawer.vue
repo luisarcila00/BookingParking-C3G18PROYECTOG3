@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer v-model="drawer" app dark src="../../assets/bg3.jpg">
+  <v-navigation-drawer v-model="drawer" app dark color="#1C1724">
     <v-list-item>
       <v-list-item-content>
         <v-list-item-title class="text-h6">

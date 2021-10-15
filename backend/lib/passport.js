@@ -13,7 +13,7 @@ passport.use('local.login', new LocalStrategy((username, password, done) => {
                 id: user._id,
                 username: user.username,
                 email: user.username,
-                roles: user.rol,
+                roles: user._doc.rol,
             }
             return done(null, user_information);
         });
