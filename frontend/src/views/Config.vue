@@ -1,11 +1,15 @@
 <template>
   <div id="cupos">
-      <h1>Cupos</h1>
-      <v-btn color ="warning" to="/asignarCupos">Registrar Cupos</v-btn>
+      
       <v-container>
           <v-row>
               <v-col v-for="cupo in cupos" :key="cupo.code" md="4" sm="6" cols="12">
                   <CuposCard :item ="cupo"></CuposCard>
+                  <v-spacer></v-spacer>
+              </v-col>
+              <v-col md="8" sm="12" cols="12">
+                  <TarifasCard ></TarifasCard>
+                  
               </v-col>
           </v-row>
       </v-container>
@@ -13,11 +17,13 @@
 </template>
 
 <script>
+import TarifasCard from '../components/TarifasCard.vue';
 import CuposCard from '../components/CuposCard.vue';
 import { getAllCupos } from '../controllers/Cupos.controller';
 export default {
     components:{
-      CuposCard,  
+      CuposCard, 
+      TarifasCard 
     },
     data(){
         return{
@@ -30,6 +36,7 @@ export default {
             this.cupos = response.data;
         })
         .catch((err)=> console.error(err));
+       
     },
 }
 </script>

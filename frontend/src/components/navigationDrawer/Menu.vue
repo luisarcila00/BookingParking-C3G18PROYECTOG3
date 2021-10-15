@@ -61,6 +61,12 @@ export default {
           route: "/reservas",
           show: true,
         },
+        {
+          title: "Configuración",
+          icon: "mdi-cogs",
+          route: "/config",
+          show: true,
+        }
       ],
     };
   },

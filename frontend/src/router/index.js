@@ -59,8 +59,18 @@ const routes = [
         component: () => import('../views/AsignarCupos.vue')
     },
     {
+        path: '/asignarCupos/:code',
+        name: 'Actualizar Cupos',
+        component: () => import('../views/AsignarCupos.vue')
+    },
+    {
         path: '/asignarTarifas',
         name: 'Asignar Tarifas',
+        component: () => import('../views/AsignarTarifas.vue')
+    },
+    {
+        path: '/asignarTarifas/:code',
+        name: 'Editar Tarifas',
         component: () => import('../views/AsignarTarifas.vue')
     },
     {

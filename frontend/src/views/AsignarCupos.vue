@@ -8,7 +8,7 @@
           <v-hover v-slot="{ hover }"  >
             <v-card :elevation="hover ? 12 : 2" class="mx-auto" height="auto" max-width="350" >
               <v-card-text class="my-4 text-center text-h6">
-              Asignar Cupos
+              {{isNew ? "Asignar" : "Actualizar"}} Cupos
               </v-card-text>
 
             
@@ -65,9 +65,13 @@
                   
 
                   <div class="safe" v-if="isHiddenSafe">
-                      <v-btn @click="guardar(); confirmarMostrarMot()"   color="primary" >
+                      <v-btn @click="guardar(); confirmarMostrarMot()"   color="primary" v-f="isNew">
                         <v-icon left > mdi-content-save </v-icon>
                         Guardar
+                      </v-btn>
+                      <v-btn @click="guardar(); confirmarMostrarMot()"   color="primary" v-f="!isNew">
+                        <v-icon left > mdi-update </v-icon>
+                        Actualizar
                       </v-btn>
                   </div>
                   
@@ -97,11 +101,11 @@
 </template>
 
 <script>
-import { createCupo } from "../controllers/Cupos.controller"
+import { createCupo, getCupo } from "../controllers/Cupos.controller"
 export default {
   data: ()=>({
 
-    code:"",
+    code:"", isNew: true,
 
     totalCup:"", reservadosCup: "", carroCup: "", motoCup: "",
  
@@ -119,6 +123,28 @@ export default {
     
 
   }),
+
+  created(){
+    const code = this.$route.params.code;
+    if(code != undefined){
+      getCupo(code)
+      .then((response)=> {
+        const cupo = response.data;
+        this.code = cupo.code;
+        this.totalCup = cupo.totalCup;
+        this.reservadosCup = cupo.reservadosCup;
+        this.carroCup = cupo.carroCup;
+        this.motoCup = cupo.motoCup;
+
+        this.isNew = false;
+
+      })
+      .catch((err) => console.error(err));
+    }
+  },
+
+
+
   methods: {
     confirmarMostrar() {
       if(this.totalCup != 0){

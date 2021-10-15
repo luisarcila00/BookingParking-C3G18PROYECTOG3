@@ -1,6 +1,7 @@
 <template>
   <v-card>
-     <v-card-title><b>Cupos Totales</b>{{item.totalCup}}</v-card-title>
+     <v-card-title><b>Cupos Totales </b >{{item.totalCup}}</v-card-title>
+     <v-spacer></v-spacer>
       <v-card-subtitle><b>Cupos Reservados</b> {{item.reservadosCup}}</v-card-subtitle>
       <v-card-subtitle><b>Cupos Carros</b> {{item.carroCup}}</v-card-subtitle>
       <v-card-subtitle><b>Cupos Motos</b> {{item.motoCup}}</v-card-subtitle>
