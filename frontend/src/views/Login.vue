@@ -38,7 +38,7 @@
   </v-card>
 </template>
 <script>
-import {users} from '../controllers/Users.controller'
+import {users} from '../controllers/users.controller'
 
 export default {
   data() {
