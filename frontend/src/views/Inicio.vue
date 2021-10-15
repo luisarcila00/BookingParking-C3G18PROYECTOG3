@@ -9,7 +9,7 @@
           </h2>
           <h2 class="hometext">
             - Realiza reservas, edita y cancela.<br/>
-            - Gestiona el ingreso de y salida de vehículos.<br/>
+            - Gestiona el ingreso y salida de vehículos.<br/>
             - Paga en línea tu mensualidad, día o fracción.
           </h2>
         </div>
