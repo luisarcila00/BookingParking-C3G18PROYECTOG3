@@ -9,7 +9,7 @@
     <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn color="success" :to="'/asignarCupos/'+item.code">Editar</v-btn>
-        <v-btn color="error" @click="eliminar()">Eliminar</v-btn>
+        
     </v-card-actions>
    </v-card>
 </template>
@@ -24,9 +24,7 @@ export default {
             console.log(`editar ${this.item.code}`);
             this.$router.push(`/asignarCupos/${this.item.code}`);
         },
-        eliminar(){
-            console.log(`Eliminar ${this.item.code}`);
-        }
+        
     }
 
 }

@@ -162,6 +162,7 @@ export default {
         },
         closeConfirmation(){
             this.snackbar= false;
+            this.$router.push("/config");
         }
 
     }
