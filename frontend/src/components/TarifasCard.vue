@@ -32,7 +32,7 @@ export default {
             item:"",
 
             headers: [
-                {text: 'code',  value:'cose'},
+                {text: 'code',  value:'code'},
                 {text: '1 a 15 minutos',  value:'unoAQuince'},
                 {text: '15 a 30 nimutos', value:'quinceATreinta'},
                 {text: '30 a 45 minutos', value:'treintaACuarentaycinco'},
@@ -53,7 +53,7 @@ export default {
     created() {
     this.initialize()    
     },
-    
+
 
     methods: {
         editar(){
