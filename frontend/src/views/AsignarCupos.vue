@@ -10,7 +10,7 @@
             max-width="350"
           >
             <v-card-text class="my-4 text-center text-h6">
-              Asignar Cupos
+              {{ isNew ? "Asignar" : "Actualizar"}} Cupos
             </v-card-text>
 
             <v-row align="center" justify="center">
@@ -137,7 +137,7 @@
 </template>
 
 <script>
-import { createCupo } from "../controllers/Cupos.controller";
+import { createCupo, getAllCupos } from "../controllers/Cupos.controller";
 export default {
   data: () => ({
     code: "",
@@ -158,6 +158,24 @@ export default {
     snackbar: false,
     snackbarText: "",
   }),
+
+   created(){
+      const code = this.$route.params.code;
+      if(code != undefined){
+          getAllCupos(code)
+          .then((response)=>{
+            const product = response.data;
+            this.code = product.code;
+            this.name = product.name;
+            this.price = product.price;
+            this.categories = product.categories;
+
+            this.isNew = false;
+          })
+          .catch((err) => console.error(err));
+      }
+    },
+
   methods: {
     confirmarMostrar() {
       if (this.totalCup != 0) {
