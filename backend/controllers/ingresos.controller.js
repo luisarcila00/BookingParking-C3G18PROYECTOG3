@@ -1,6 +1,8 @@
 const Model = require('../models/ingresos.model')
 const Cupos = require('../models/cupos.model')
-const moment = require('moment')
+const moment = require('moment-timezone');
+moment.locale('es')
+moment.tz("America/Bogota").format();
 module.exports = class Api {
     // El controlador que sera llamado para cada acción
     static async getAll(req, res) {

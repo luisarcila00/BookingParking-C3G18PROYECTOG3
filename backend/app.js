@@ -6,8 +6,9 @@ const cors = require('cors'); // habilita la conexion desde cualquier fuente
 const passport = require('passport')
 require('./lib/passport');
 const session = require('express-session');
-const moment = require('moment');
+const moment = require('moment-timezone');
 moment.locale('es')
+moment.tz("America/Bogota").format();
 const flash = require('connect-flash');
 const app = express();
 
