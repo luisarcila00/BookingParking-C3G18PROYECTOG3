@@ -32,12 +32,12 @@ module.exports = class Api {
             let registros = await Model.count({fecha_salida: ''})
             let reserva = await Model.findOne({placa: req.body.placa})
             if (reserva && !reserva.fecha_salida) {
-                req.body.fecha_salida = moment().format('YYYY-MM-DD HH:mm:ss')
+                req.body.fecha_salida = moment().subtract(5,'hours').format('YYYY-MM-DD HH:mm:ss')
                 reserva = await Model.updateOne({placa: req.body.placa}, req.body)
             } else {
                 if (!req.body.type) return res.status(400).json({message: 'Debe ingresar un tipo de vehiculo'})
                 req.body.fecha_salida = ''
-                req.body.fecha_ingreso = moment().format('YYYY-MM-DD HH:mm:ss')
+                req.body.fecha_ingreso = moment().subtract(5,'hours').format('YYYY-MM-DD HH:mm:ss')
                 reserva = await Model.create(req.body)
             }
             res.status(201).json(reserva)
