@@ -8,14 +8,14 @@
             ¡Administrar y gestionar tu parqueadero nunca fue más fácil!
           </h2>
           <h2 class="hometext">
-            - Realiza reservas, edita y cancela.<br />
-            - Gestiona el ingreso de y salida de vehículos.<br />
+            - Realiza reservas, edita y cancela.<br/>
+            - Gestiona el ingreso de y salida de vehículos.<br/>
             - Paga en línea tu mensualidad, día o fracción.
           </h2>
         </div>
       </v-col>
       <v-col lg="6" cols="12">
-        <login></login>
+        <login @update:username="update($event)"></login>
       </v-col>
     </v-row>
   </div>
@@ -23,8 +23,14 @@
 
 <script>
 import Login from "./Login.vue";
+
 export default {
-  components: { Login },
+  components: {Login},
+  methods: {
+    update(data) {
+      this.$emit("update:username", data);
+    },
+  },
 };
 </script>
 
@@ -32,16 +38,19 @@ export default {
 * {
   font-family: "Roboto";
 }
+
 .titles {
   color: #fa6f41;
   text-align: center;
   font-size: 48px;
 }
+
 .subtitles {
   color: #1c1724;
   text-align: center;
   font-size: 32px;
 }
+
 .hometext {
   color: #1c1724;
   text-align: left;

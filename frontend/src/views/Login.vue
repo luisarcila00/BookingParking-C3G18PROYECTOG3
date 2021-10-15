@@ -23,9 +23,6 @@
     </div>
     <v-card-text class="d-flex justify-center align-center"
       > ¿Aún no eres miembro? &nbsp;<a href="formulario" color="secondary">Regístrate</a></v-card-text>
-   
-     
-   
 
     <v-snackbar v-model="snackbar">
       {{ snackbarText }}
@@ -59,10 +56,9 @@ export default {
         .login({ username: this.username, password: this.password })
         .then((response) => {
           console.log(response);
+          debugger
           this.$emit("update:username", response.data.username);
           sessionStorage.setItem("role", response.data.roles);
-          this.$router.push("Dashboard");
-          window.location.reload();
         })
         .catch((err) => {
           console.log(err.message);
