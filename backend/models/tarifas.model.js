@@ -4,8 +4,8 @@ const tarifasSchema = mongoose.Schema ({
 
     code:Number,
     unoAQuince: Number,
-    quinceATrienta: Number,
-    treintaACuearentaycinco: Number,
+    quinceATreinta: Number,
+    treintaACuarentaycinco: Number,
     cuarentaycincoASesenta: Number,
     hora: Number,
     dosHoras: Number,
