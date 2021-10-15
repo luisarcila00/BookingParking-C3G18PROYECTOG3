@@ -4,6 +4,7 @@ const Schema = mongoose.Schema({
     placa: String,
     fecha_ingreso: String,
     fecha_salida: String,
+    type: String,
     es_reserva: Boolean
 })
 

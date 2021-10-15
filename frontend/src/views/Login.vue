@@ -56,7 +56,6 @@ export default {
         .login({ username: this.username, password: this.password })
         .then((response) => {
           console.log(response);
-          debugger
           this.$emit("update:username", response.data.username);
           sessionStorage.setItem("role", response.data.roles);
         })
