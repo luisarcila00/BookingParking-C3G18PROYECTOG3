@@ -31,21 +31,19 @@ export default {
             
             item:"",
 
-
-            
             headers: [
-                {text: 'code',  value:'zero'},
-                {text: '1 a 15 minutos',  value:'one'},
-                {text: '15 a 30 nimutos', value:'two'},
-                {text: '30 a 45 minutos', value:'three'},
-                {text:'45 a 60 minutos', value: 'four'},
-                {text: '1 Hora', value:'five'},
-                {text: '2 Horas', value: 'six'},
-                {text: '3 Horas', value: 'seven'},
-                {text:'3 a 8 Horas', value: 'eight'},
-                {text: 'Hora adicional', value: 'nine'},
-                {text: '1 Día', value: 'ten'},
-                {text: '1 mes', value: 'eleven'}
+                {text: 'code',  value:'cose'},
+                {text: '1 a 15 minutos',  value:'unoAQuince'},
+                {text: '15 a 30 nimutos', value:'quinceATreinta'},
+                {text: '30 a 45 minutos', value:'treintaACuarentaycinco'},
+                {text:'45 a 60 minutos', value: 'cuarentaycincoASesenta'},
+                {text: '1 Hora', value:'hora'},
+                {text: '2 Horas', value: 'dosHoras'},
+                {text: '3 Horas', value: 'tresHoras'},
+                {text:'3 a 8 Horas', value: 'tresAOcho'},
+                {text: 'Hora adicional', value: 'adicional'},
+                {text: '1 Día', value: 'dia'},
+                {text: '1 mes', value: 'mes'}
             ],
             datos: [],
         };
